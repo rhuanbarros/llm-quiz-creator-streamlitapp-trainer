@@ -1,0 +1,83 @@
+[
+    {
+      "topic_id": "1.1.1",
+      "topic_description": "1. **Vectors:**\n   1.1 Concept of vectors as ordered sets of elements.\n      1.1.1 Vectors as mathematical entities with both magnitude and direction.",
+      "level": "beginner",
+      "question": "A vector, represented as \(\mathbf{v} = \begin{bmatrix} v_1 \\ v_2 \end{bmatrix}\), is solely defined by its magnitude.",
+      "answer": false,
+      "explanation": "Vectors are defined by both magnitude and direction, not just magnitude alone."
+    },
+    {
+      "topic_id": "1.1.2",
+      "topic_description": "1. **Vectors:**\n   1.1 Concept of vectors as ordered sets of elements.\n      1.1.2 Representation of vectors in Cartesian coordinate systems.",
+      "level": "beginner",
+      "question": "In Cartesian coordinates, vectors are commonly expressed as \(\mathbf{v} = \langle v_1, v_2 \rangle\).",
+      "answer": true,
+      "explanation": "This statement is true, as vectors are often represented in Cartesian coordinates using this notation."
+    },
+    {
+      "topic_id": "1.2.1",
+      "topic_description": "1. **Vectors:**\n   1.2 Importance of direction and magnitude in understanding vectors.\n      1.2.1 Significance of magnitude in measuring the length or size of vectors.",
+      "level": "beginner",
+      "question": "The magnitude of a vector, denoted as \(|\mathbf{v}|\), represents its orientation in space.",
+      "answer": false,
+      "explanation": "The magnitude of a vector represents its length or size in space, not its orientation."
+    },
+    {
+      "topic_id": "1.2.2",
+      "topic_description": "1. **Vectors:**\n   1.2 Importance of direction and magnitude in understanding vectors.\n      1.2.2 Role of direction in indicating orientation or position.",
+      "level": "beginner",
+      "question": "Directional information of a vector is crucial for applications like navigation and force analysis.",
+      "answer": true,
+      "explanation": "Directional information is indeed crucial for applications such as navigation and force analysis."
+    },
+    {
+      "topic_id": "1.2.2",
+      "topic_description": "1. **Vectors:**\n   1.2 Importance of direction and magnitude in understanding vectors.\n      1.2.2 Role of direction in indicating orientation or position.",
+      "level": "beginner",
+      "question": "Vectors with the same magnitude but different directions are identical.",
+      "answer": false,
+      "explanation": "Vectors with the same magnitude but different directions are distinct; direction matters."
+    },
+    {
+      "topic_id": "1.1.1",
+      "topic_description": "1. **Vectors:**\n   1.1 Concept of vectors as ordered sets of elements.\n      1.1.1 Vectors as mathematical entities with both magnitude and direction.",
+      "level": "beginner",
+      "question": "Vectors are exclusively used in mathematics and have no practical applications in physics or engineering.",
+      "answer": false,
+      "explanation": "Vectors play a crucial role in physics, engineering, and mathematics."
+    },
+    {
+      "topic_id": "1.2.1",
+      "topic_description": "1. **Vectors:**\n   1.2 Importance of direction and magnitude in understanding vectors.\n      1.2.1 Significance of magnitude in measuring the length or size of vectors.",
+      "level": "beginner",
+      "question": "The magnitude of a vector provides a scalar value indicating its size.",
+      "answer": true,
+      "explanation": "The magnitude of a vector quantifies its length or size, providing a scalar value."
+    },
+    {
+      "topic_id": "1.1.2",
+      "topic_description": "1. **Vectors:**\n   1.1 Concept of vectors as ordered sets of elements.\n      1.1.2 Representation of vectors in Cartesian coordinate systems.",
+      "level": "beginner",
+      "question": "Vectors cannot be represented in Cartesian coordinates.",
+      "answer": false,
+      "explanation": "Vectors can indeed be represented in Cartesian coordinates using appropriate notation."
+    },
+    {
+      "topic_id": "1.2.2",
+      "topic_description": "1. **Vectors:**\n   1.2 Importance of direction and magnitude in understanding vectors.\n      1.2.2 Role of direction in indicating orientation or position.",
+      "level": "beginner",
+      "question": "The direction of a vector has no practical significance in real-world applications.",
+      "answer": false,
+      "explanation": "Directional information is crucial in real-world applications like navigation and force analysis."
+    },
+    {
+      "topic_id": "1.2.1",
+      "topic_description": "1. **Vectors:**\n   1.2 Importance of direction and magnitude in understanding vectors.\n      1.2.1 Significance of magnitude in measuring the length or size of vectors.",
+      "level": "beginner",
+      "question": "If two vectors have the same magnitude, they are identical.",
+      "answer": false,
+      "explanation": "Two vectors with the same magnitude may still differ in direction, making them distinct."
+    }
+  ]
+  
