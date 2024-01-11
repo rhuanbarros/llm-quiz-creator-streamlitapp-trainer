@@ -44,10 +44,15 @@ def load_question():
 
 def show_question():
     question = st.session_state.question["question"]
-    st.markdown(
-        f"""
-        ## {question}
-        """
+    # st.markdown(
+    #     f"""
+    #     ## {question}
+    #     """
+    # )
+    st.write(
+        r'''
+        #### Vectors are often represented as  $$ \mathbf{v} = \langle v_1, v_2 \rangle $$  in polar coordinate systems. 
+        '''
     )
 
 
