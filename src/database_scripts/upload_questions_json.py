@@ -14,7 +14,7 @@ supabase: Client = create_client(url, key)
 
 data_questions = []
 
-with open('./src/database_scripts/jsons/q3.csv', 'r') as file:
+with open('./src/database_scripts/jsons/q4.csv', 'r') as file:
     csv_reader  = csv.reader(file)
     next(csv_reader)
     for row in csv_reader:
