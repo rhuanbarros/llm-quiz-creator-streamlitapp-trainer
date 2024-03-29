@@ -50,7 +50,7 @@ def show_config_train():
     pass
 
 def load_question():
-    response = supabase.table('questions').select("*").limit(1).execute()
+    response = supabase.table('get_question').select("*").execute()
     st.session_state.question = response.data[0]
     
     print("----------------- QUESTION LOADED -----------------")
@@ -60,12 +60,15 @@ def load_question():
 def verify_answer(answer):
     question = st.session_state.question
     
-    correct_answer = "True" if answer == question["answer"] else "False"
     
     if answer == question["answer"]:
         st.success("Correct answer!")
+        correct_answer = "True"
     else:
+        correct_answer = "False"
         st.error("Wrong answer!")
+        data, count = supabase.table('questions').update({"show_again": True}).eq('id', question["id"]).execute()
+        
     
     data, count = supabase.table('answers').insert({"question_id": question["id"], "correct_answer": correct_answer}).execute()
     
