@@ -88,6 +88,8 @@ def on_click_verify_answer(answer):
     
     if answer == question["answer"]:
         correct_answer = True
+        # if user selected the rigth answer, make the question not show again later
+        data, count = supabase.table('questions').update({"show_again": False}).eq('id', question["id"]).execute()
     else:
         correct_answer = False
         # if user selected the wrong answer, make the question show again later
