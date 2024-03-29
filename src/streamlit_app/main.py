@@ -35,17 +35,18 @@ st.write(
     """
 )
 
-PAGE_CONFIG_TRAIN = 0
-PAGE_QUESTION = 1
+FLOW_CONFIGURATION = 0
+FLOW_QUESTION = 1
+FLOW_RESULTS = 2
 
 if "first_run" not in st.session_state:
     st.session_state.first_run = True
     
-if "page_show" not in st.session_state:
-    st.session_state.page_show = PAGE_CONFIG_TRAIN
+if "page_flow" not in st.session_state:
+    st.session_state.page_flow = FLOW_QUESTION
     
 if "question" not in st.session_state:
-    st.session_state.question = "None"
+    st.session_state.question = None
 
 if "show_explanation" not in st.session_state:
     st.session_state.show_explanation = False
@@ -56,17 +57,29 @@ if "correct_answer" not in st.session_state:
 
 
 def show_config_train():
-    pass
+    st.write(
+        rf"""
+        #### Configuration
+        """
+    )
 
 def load_question():
+    print("----------------- LOADING QUESTION FUNCTION ------------------")
+    
     response = supabase.table('get_question').select("*").execute()
-    if len(response.data):
+    if len(response.data) > 0:
         st.session_state.question = response.data[0]
     
         print("----------------- QUESTION LOADED -----------------")
         print(st.session_state.question)
         print("----------------- QUESTION LOADED -----------------")
     else:
+        st.info("No more questions available")
+        st.session_state.page_flow = FLOW_RESULTS
+    
+    # st.rerun()
+
+    
         
     
 def on_click_verify_answer(answer):
@@ -74,24 +87,30 @@ def on_click_verify_answer(answer):
     
     
     if answer == question["answer"]:
-        correct_answer = "True"
+        correct_answer = True
     else:
-        correct_answer = "False"
+        correct_answer = False
         # if user selected the wrong answer, make the question show again later
         data, count = supabase.table('questions').update({"show_again": True}).eq('id', question["id"]).execute()
         
     data, count = supabase.table('answers').insert({"question_id": question["id"], "correct_answer": correct_answer}).execute()
     
+    st.session_state.correct_answer = correct_answer
     st.session_state.show_explanation = True
     
 def on_click_next():
     st.session_state.show_explanation = False
     load_question()
+    # st.rerun()
        
 
 
 def show_question():
-    question = st.session_state.question["question"]
+    if st.session_state.question is None:
+        question = "Loading..."
+    else:
+        question = st.session_state.question["question"]
+        
     st.write(
         rf"""
         #### {question}
@@ -120,18 +139,27 @@ def show_explanation():
     st.info(f'{explanation}', icon="ℹ️")
     
     st.button("Next", on_click=on_click_next)
-
-# match st.session_state.page_show:
-#     case 0:
-#         show_config_train()
-#     case 1:
-#         show_question()
     
-if st.session_state.first_run:
-    load_question()
-    st.session_state.first_run = False
-    
-show_question()
+def show_results():
+    st.write(
+        rf"""
+        #### Resuls
+        """
+    )
 
-if st.session_state.show_explanation:
-    show_explanation()
+match st.session_state.page_flow:
+    case 0: # FLOW_CONFIGURATION
+        show_config_train()
+    
+    case 1: # FLOW_QUESTION
+        if st.session_state.first_run:
+            st.session_state.first_run = False
+            load_question()
+            
+        show_question()
+
+        if st.session_state.show_explanation:
+            show_explanation()
+    
+    case 2: # FLOW_RESULTS
+        show_results()
