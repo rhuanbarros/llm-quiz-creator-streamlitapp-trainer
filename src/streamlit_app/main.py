@@ -138,6 +138,7 @@ def show_explanation():
 
     st.info(f'{explanation}', icon="ℹ️")
     
+    st.button("Elaborate more the explanation")
     st.button("Next", on_click=on_click_next)
     
 def show_results():

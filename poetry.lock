@@ -1130,6 +1130,17 @@ MarkupSafe = ">=2.0"
 i18n = ["Babel (>=2.7)"]
 
 [[package]]
+name = "json-repair"
+version = "0.10.1"
+description = "A package to repair broken json strings"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "json_repair-0.10.1-py3-none-any.whl", hash = "sha256:9bada44dcd022c66763b3470820d11ab513387951b49c8aa3c7bd51cbfd919fc"},
+    {file = "json_repair-0.10.1.tar.gz", hash = "sha256:1996290be1ab9757728839d05fb3dfb69490bd486c813f8c89eac1ae07d7235e"},
+]
+
+[[package]]
 name = "jsonpatch"
 version = "1.33"
 description = "Apply JSON-Patches (RFC 6902)"
@@ -3342,4 +3353,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "95ee736029efe73c885355acd4193f5ed35f503bdb8e79f1e4c9f0cb3c58f3eb"
+content-hash = "97fd1537271de07a6bea3be11567e40286b4cbbd86f1df1f01296808f5cf94b2"
