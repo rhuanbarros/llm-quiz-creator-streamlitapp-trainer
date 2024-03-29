@@ -7,6 +7,18 @@ import numpy as np
 from supabase import create_client, Client
 import json
 
+import logging
+import sys
+
+# not working
+# logging.basicConfig(level=print,  # Define o nível de log
+#                     format='%(asctime)s - %(levelname)s - %(message)s',  # Define o formato da mensagem de log
+#                     stream=sys.stdout)  # Define a saída do log para stdout
+#                     # filename='app.log',  # Define o arquivo onde os logs serão gravados
+#                     # filemode='a')  # Define o modo de escrita do arquivo de log (append)
+
+
+
 url = "https://xoxlgvakygiyfijfeixu.supabase.co"
 key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhveGxndmFreWdpeWZpamZlaXh1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwNDkyNzU2NywiZXhwIjoyMDIwNTAzNTY3fQ.V3766GRj6hkt1Ci-52tjSiULVoF3nfCPPDnR6Hc_rT0"
 
@@ -40,6 +52,24 @@ def show_config_train():
 def load_question():
     response = supabase.table('questions').select("*").limit(1).execute()
     st.session_state.question = response.data[0]
+    
+    print("----------------- QUESTION LOADED -----------------")
+    print(st.session_state.question)
+    print("----------------- QUESTION LOADED -----------------")
+    
+def verify_answer(answer):
+    question = st.session_state.question
+    
+    correct_answer = "True" if answer == question["answer"] else "False"
+    
+    if answer == question["answer"]:
+        st.success("Correct answer!")
+    else:
+        st.error("Wrong answer!")
+    
+    data, count = supabase.table('answers').insert({"question_id": question["id"], "correct_answer": correct_answer}).execute()
+    
+        
 
 
 def show_question():
@@ -49,13 +79,10 @@ def show_question():
         #### {question}
         """
     )
-    
-    # st.write(
-    #     r'''
-    #     #### Vectors are often represented as  $$ \mathbf{v} = \langle v_1, v_2 \rangle $$  in polar coordinate systems. 
-    #     '''
-    # )
-
+        
+    _, col2, col3, _ = st.columns([9,3,3,9])    
+    col2.button("False", key="btn_false", on_click=verify_answer, args=["FALSE"])
+    col3.button("True", key="btn_true", on_click=verify_answer, args=["TRUE"])
 
 # match st.session_state.page_show:
 #     case 0:
