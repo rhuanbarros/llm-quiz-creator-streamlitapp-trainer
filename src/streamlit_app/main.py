@@ -120,17 +120,17 @@ def load_question():
             subject_matter_1s_list_selected.remove("All")
             
         if len(subject_matter_1s_list_selected) > 0:
-            response = supabase.table('get_question').select("*").in_("subject_matter_1", subject_matter_1s_list_selected).execute()
+            response = supabase.table('get_question').select("*").in_("subject_matter_1", subject_matter_1s_list_selected).eq('show_again', True).is_('answer_id', 'null').execute()
         else:
-            response = supabase.table('get_question').select("*").execute()
+            response = supabase.table('get_question').select("*").eq('show_again', True).is_('answer_id', 'null').execute()        
     else:        
         if "All" in topic_descriptions_list_selected:
             topic_descriptions_list_selected.remove("All")
             
         if len(topic_descriptions_list_selected) > 0:
-            response = supabase.table('get_question').select("*").in_("topic_description", topic_descriptions_list_selected).execute()
+            response = supabase.table('get_question').select("*").in_("topic_description", topic_descriptions_list_selected).eq('show_again', True).is_('answer_id', 'null').execute()
         else:
-            response = supabase.table('get_question').select("*").execute()
+            response = supabase.table('get_question').select("*").eq('show_again', True).is_('answer_id', 'null').execute()
     
     if len(response.data) > 0:
         st.session_state.question = response.data[0]

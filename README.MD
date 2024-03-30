@@ -6,7 +6,10 @@
 -- DROP VIEW get_question;
 
 CREATE VIEW get_question AS
-SELECT q.*
+SELECT q.*,
+    a.id AS answer_id,
+    a.created_at AS answer_created_at,
+    a.correct_answer AS correct_answer
 FROM questions AS q
 LEFT JOIN answers AS a ON q.id = a.question_id
 -- WHERE a.question_id IS NULL
