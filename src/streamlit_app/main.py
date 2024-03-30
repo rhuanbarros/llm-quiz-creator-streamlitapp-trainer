@@ -109,8 +109,9 @@ def show_config_train():
     subject_matter_1s_list_selected = st.multiselect("Subject matter 1", subject_matter_1s_list, ["All"])
     topic_descriptions_list_selected = st.multiselect("Topic description", topic_descriptions_list, ["All"])
     
-    st.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
-    st.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
+    _, col2, col3, _ = st.columns([5,7,7,5])
+    col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
+    col3.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
 
 
 def load_question():
@@ -155,8 +156,7 @@ def load_question():
         
     
 def on_click_verify_answer(answer):
-    question = st.session_state.question
-    
+    question = st.session_state.question    
     
     if answer == question["answer"]:
         correct_answer = True
@@ -197,34 +197,54 @@ def show_question():
             #### {question}
             """
         )
+        
+        st.write("")  # Empty string
+        
             
-        _, col2, col3, _ = st.columns([9,3,3,9])    
+        _, col2, col3, _ = st.columns([9,3,3,9])
         col2.button("False", key="btn_false", on_click=on_click_verify_answer, args=["FALSE"])
         col3.button("True", key="btn_true", on_click=on_click_verify_answer, args=["TRUE"])
         
-        st.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+        # in this case, the button is showed in other section of UI
+        if st.session_state.show_explanation == False:
+            st.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
     else:
         st.button("Start over again", on_click=on_click_start_over_again)
+        
+def on_click_elaborate_more_the_explanation():
+    pass
     
 def show_explanation():
+    st.write("")  # Empty string
+    
     if st.session_state.correct_answer:
         st.success("Correct answer!")
     else:
         st.error("Wrong answer!")
         
     explanation = st.session_state.question["explanation"]
+    
+    st.write("")  # Empty string
+    st.write("")  # Empty string
     st.write(
         rf"""
         #### Explanation
         """
     )
-    
-    # container = st.container()
 
     st.info(f'{explanation}', icon="ℹ️")
     
-    st.button("Elaborate more the explanation")
-    st.button("Next", on_click=on_click_next)
+    st.write("")  # Empty string
+    st.write("")  # Empty string
+    
+    _, col2, col3, col4, _ = st.columns([5,7,14,7,5])
+    
+    col2.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+    
+    col3.button("Elaborate more the explanation", on_click="on_click_elaborate_more_the_explanation")
+    
+    col4.button("Next", on_click=on_click_next)
+    
     
 def on_click_start_over_again():
     # reset app state
