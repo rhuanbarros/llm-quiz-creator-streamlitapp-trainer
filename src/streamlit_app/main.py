@@ -249,13 +249,13 @@ def show_question():
         
         st.write("")  # Empty string
         
-            
-        _, col2, col3, _ = st.columns([9,3,3,9])
-        col2.button("False", key="btn_false", on_click=on_click_verify_answer, args=["FALSE"])
-        col3.button("True", key="btn_true", on_click=on_click_verify_answer, args=["TRUE"])
-        
         # in this case, the button is showed in other section of UI
         if st.session_state.show_explanation == False:
+            
+            _, col2, col3, _ = st.columns([9,3,3,9])
+            col2.button("False", key="btn_false", on_click=on_click_verify_answer, args=["FALSE"])
+            col3.button("True", key="btn_true", on_click=on_click_verify_answer, args=["TRUE"])
+        
             st.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
     else:
         st.button("Start over again", on_click=on_click_start_over_again)
