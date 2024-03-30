@@ -156,15 +156,29 @@ def show_explanation():
     st.button("Next", on_click=on_click_next)
     
 def show_results():
-    answered_questions = st.session_state.answered_questions
-    df = pd.DataFrame(answered_questions)
-    df.agg({"answered_questions": ["sum", "count"]})
-    
     st.write(
         rf"""
         #### Resuls
         """
     )
+    
+    answered_questions = st.session_state.answered_questions
+    df = pd.DataFrame(answered_questions)
+    
+    correct_mask = df['correct_answer'] == 1
+    correct_df = df.loc[ correct_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].sum().reset_index()
+    incorrect_mask = df['correct_answer'] == 0
+    incorrect_df = df.loc[ incorrect_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].count().reset_index()
+    incorrect_df = incorrect_df.rename(columns={"correct_answer": "incorrect_answer"})
+    
+    df_results = pd.merge(correct_df, incorrect_df, on=["subject_matter_1", "level"], how='outer')
+    df_results.fillna(0, inplace=True)
+    df_results["correct_answer"] = df_results["correct_answer"].astype(int)
+    df_results["incorrect_answer"] = df_results["incorrect_answer"].astype(int)
+    df_results
+
+    st.button("Start over again")
+    
 
 match st.session_state.page_flow:
     case 0: # FLOW_CONFIGURATION
