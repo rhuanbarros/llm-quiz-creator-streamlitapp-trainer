@@ -132,6 +132,20 @@ def get_topic_descriptions():
 # def on_click_start(subject_matter_1s_list_selected, topic_descriptions_list_selected, use_subject_matter_1_filter):
 def on_click_start(subject_matter_1s_list_selected, ):
     st.session_state.subject_matter_1s_list_selected = subject_matter_1s_list_selected
+    use_subject_matter_1_filter = st.session_state.use_subject_matter_1_filter
+    
+    if use_subject_matter_1_filter:
+        if "All" in subject_matter_1s_list_selected:
+            subject_matter_1s_list_selected.remove("All")
+            
+        if len(subject_matter_1s_list_selected) > 0:
+            list_filter = []
+            for item in subject_matter_1s_list_selected:
+                list_filter.append( {"subject_matter_1": item} )
+                
+            data, count = supabase.table('question_filters').insert(list_filter).execute()
+    
+    
     # st.session_state.topic_descriptions_list_selected = topic_descriptions_list_selected
     # st.session_state.use_subject_matter_1_filter = use_subject_matter_1_filter
     
@@ -158,27 +172,20 @@ def show_config_train():
 def load_question():
     print("----------------- LOADING QUESTION FUNCTION ------------------")
     
-    subject_matter_1s_list_selected = st.session_state.subject_matter_1s_list_selected
-    topic_descriptions_list_selected = st.session_state.topic_descriptions_list_selected
-    use_subject_matter_1_filter = st.session_state.use_subject_matter_1_filter
-    
-    if use_subject_matter_1_filter:
-        if "All" in subject_matter_1s_list_selected:
-            subject_matter_1s_list_selected.remove("All")
-            
-        if len(subject_matter_1s_list_selected) > 0:
-            response = supabase.table('get_question').select("*").in_("subject_matter_1", subject_matter_1s_list_selected).eq('show_again', True).is_('answer_id', 'null').execute()
-        else:
-            response = supabase.table('get_question').select("*").eq('show_again', True).is_('answer_id', 'null').execute()        
-            
-    # else:        
-    #     if "All" in topic_descriptions_list_selected:
-    #         topic_descriptions_list_selected.remove("All")
-            
-    #     if len(topic_descriptions_list_selected) > 0:
-    #         response = supabase.table('get_question').select("*").in_("topic_description", topic_descriptions_list_selected).eq('show_again', True).is_('answer_id', 'null').execute()
-    #     else:
-    #         response = supabase.table('get_question').select("*").eq('show_again', True).is_('answer_id', 'null').execute()
+    level = "beginner"
+    random_number = random.randint(0, 99)
+    if random_number <= 65:
+        level = "beginner"
+    else:
+        level = random.choice(["intermediate", "hard"])
+        
+    match level:
+        case "beginner":
+            response = supabase.table("get_question_beginner").select("*").execute()
+        case "intermediate":
+            response = supabase.table("get_question_intermediate").select("*").execute()
+        case "hard":
+            response = supabase.table("get_question_hard").select("*").execute()
     
     if len(response.data) > 0:
         st.session_state.question = response.data[0]
