@@ -43,7 +43,7 @@ if "first_run" not in st.session_state:
     st.session_state.first_run = True
     
 if "page_flow" not in st.session_state:
-    st.session_state.page_flow = FLOW_QUESTION
+    st.session_state.page_flow = FLOW_CONFIGURATION
     
 if "question" not in st.session_state:
     st.session_state.question = None
@@ -57,7 +57,36 @@ if "correct_answer" not in st.session_state:
 if "answered_questions" not in st.session_state:
     st.session_state.answered_questions = []
 
+if "subject_matter_1s_list_selected" not in st.session_state:
+    st.session_state.subject_matter_1s_list_selected = []
 
+if "topic_descriptions_list_selected" not in st.session_state:
+    st.session_state.topic_descriptions_list_selected = []
+
+
+@st.cache_resource
+def get_subject_matter_1s():
+    response = supabase.table('get_subject_matter_1s').select("*").execute()
+    data_list = ["All"]
+    for row in response.data:
+        data_list.append(row["subject_matter_1"])
+    
+    return data_list
+
+@st.cache_resource
+def get_topic_descriptions():
+    response = supabase.table('get_topic_descriptions').select("*").execute()
+    data_list = ["All"]
+    for row in response.data:
+        data_list.append(row["topic_description"])
+    
+    return data_list
+
+def on_click_start(subject_matter_1s_list_selected, topic_descriptions_list_selected):
+    st.session_state.subject_matter_1s_list_selected = subject_matter_1s_list_selected
+    st.session_state.topic_descriptions_list_selected = topic_descriptions_list_selected
+    
+    st.session_state.page_flow = FLOW_QUESTION
 
 def show_config_train():
     st.write(
@@ -65,11 +94,29 @@ def show_config_train():
         #### Configuration
         """
     )
+    subject_matter_1s_list = get_subject_matter_1s()
+    topic_descriptions_list = get_topic_descriptions()
+    
+    subject_matter_1s_list_selected = st.multiselect("Subject matter 1", subject_matter_1s_list, ["All"])
+    topic_descriptions_list_selected = st.multiselect("Topic description", topic_descriptions_list, ["All"])
+    
+    st.button("Start", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected])
+
 
 def load_question():
     print("----------------- LOADING QUESTION FUNCTION ------------------")
     
-    response = supabase.table('get_question').select("*").execute()
+    subject_matter_1s_list_selected = st.session_state.subject_matter_1s_list_selected
+    
+    if "All" in subject_matter_1s_list_selected:
+        subject_matter_1s_list_selected.remove("All")
+        
+    if len(subject_matter_1s_list_selected) > 0:
+        response = supabase.table('get_question').select("*").in_("subject_matter_1", subject_matter_1s_list_selected).execute()
+        # response = supabase.table('get_question').select("*").filter('subject_matter_1', 'in', subject_matter_1s_list_selected).execute()
+    else:
+        response = supabase.table('get_question').select("*").execute()
+    
     if len(response.data) > 0:
         st.session_state.question = response.data[0]
     
@@ -79,8 +126,6 @@ def load_question():
     else:
         st.info("No more questions available")
         st.session_state.page_flow = FLOW_RESULTS
-    
-    # st.rerun()
 
     
         
