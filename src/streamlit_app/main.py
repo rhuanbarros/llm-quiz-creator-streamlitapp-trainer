@@ -54,6 +54,9 @@ if "show_explanation" not in st.session_state:
 if "correct_answer" not in st.session_state:
     st.session_state.correct_answer = None
 
+if "answered_questions" not in st.session_state:
+    st.session_state.answered_questions = []
+
 
 
 def show_config_train():
@@ -95,6 +98,10 @@ def on_click_verify_answer(answer):
         # if user selected the wrong answer, make the question show again later
         data, count = supabase.table('questions').update({"show_again": True}).eq('id', question["id"]).execute()
         
+    question["correct_answer"] = correct_answer
+    
+    st.session_state.answered_questions.append(question)
+        
     data, count = supabase.table('answers').insert({"question_id": question["id"], "correct_answer": correct_answer}).execute()
     
     st.session_state.correct_answer = correct_answer
@@ -104,6 +111,9 @@ def on_click_next():
     st.session_state.show_explanation = False
     load_question()
     # st.rerun()
+    
+def on_click_end_session():
+    st.session_state.page_flow = FLOW_RESULTS
        
 
 
@@ -122,6 +132,8 @@ def show_question():
     _, col2, col3, _ = st.columns([9,3,3,9])    
     col2.button("False", key="btn_false", on_click=on_click_verify_answer, args=["FALSE"])
     col3.button("True", key="btn_true", on_click=on_click_verify_answer, args=["TRUE"])
+    
+    st.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
     
 def show_explanation():
     if st.session_state.correct_answer:
@@ -144,6 +156,10 @@ def show_explanation():
     st.button("Next", on_click=on_click_next)
     
 def show_results():
+    answered_questions = st.session_state.answered_questions
+    df = pd.DataFrame(answered_questions)
+    df.agg({"answered_questions": ["sum", "count"]})
+    
     st.write(
         rf"""
         #### Resuls
