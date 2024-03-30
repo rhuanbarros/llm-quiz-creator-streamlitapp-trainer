@@ -129,10 +129,11 @@ def get_topic_descriptions():
     
     return data_list
 
-def on_click_start(subject_matter_1s_list_selected, topic_descriptions_list_selected, use_subject_matter_1_filter):
+# def on_click_start(subject_matter_1s_list_selected, topic_descriptions_list_selected, use_subject_matter_1_filter):
+def on_click_start(subject_matter_1s_list_selected, ):
     st.session_state.subject_matter_1s_list_selected = subject_matter_1s_list_selected
-    st.session_state.topic_descriptions_list_selected = topic_descriptions_list_selected
-    st.session_state.use_subject_matter_1_filter = use_subject_matter_1_filter
+    # st.session_state.topic_descriptions_list_selected = topic_descriptions_list_selected
+    # st.session_state.use_subject_matter_1_filter = use_subject_matter_1_filter
     
     st.session_state.page_flow = FLOW_QUESTION
 
@@ -146,11 +147,12 @@ def show_config_train():
     topic_descriptions_list = get_topic_descriptions()
     
     subject_matter_1s_list_selected = st.multiselect("Subject matter 1", subject_matter_1s_list, ["All"])
-    topic_descriptions_list_selected = st.multiselect("Topic description", topic_descriptions_list, ["All"])
+    # topic_descriptions_list_selected = st.multiselect("Topic description", topic_descriptions_list, ["All"])
     
     _, col2, col3, _ = st.columns([5,7,7,5])
-    col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
-    col3.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
+    col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected])
+    # col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
+    # col3.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
 
 
 def load_question():
@@ -168,14 +170,15 @@ def load_question():
             response = supabase.table('get_question').select("*").in_("subject_matter_1", subject_matter_1s_list_selected).eq('show_again', True).is_('answer_id', 'null').execute()
         else:
             response = supabase.table('get_question').select("*").eq('show_again', True).is_('answer_id', 'null').execute()        
-    else:        
-        if "All" in topic_descriptions_list_selected:
-            topic_descriptions_list_selected.remove("All")
             
-        if len(topic_descriptions_list_selected) > 0:
-            response = supabase.table('get_question').select("*").in_("topic_description", topic_descriptions_list_selected).eq('show_again', True).is_('answer_id', 'null').execute()
-        else:
-            response = supabase.table('get_question').select("*").eq('show_again', True).is_('answer_id', 'null').execute()
+    # else:        
+    #     if "All" in topic_descriptions_list_selected:
+    #         topic_descriptions_list_selected.remove("All")
+            
+    #     if len(topic_descriptions_list_selected) > 0:
+    #         response = supabase.table('get_question').select("*").in_("topic_description", topic_descriptions_list_selected).eq('show_again', True).is_('answer_id', 'null').execute()
+    #     else:
+    #         response = supabase.table('get_question').select("*").eq('show_again', True).is_('answer_id', 'null').execute()
     
     if len(response.data) > 0:
         st.session_state.question = response.data[0]
