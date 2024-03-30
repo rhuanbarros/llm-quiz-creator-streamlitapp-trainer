@@ -66,6 +66,11 @@ if "topic_descriptions_list_selected" not in st.session_state:
 if "use_subject_matter_1_filter" not in st.session_state:
     st.session_state.use_subject_matter_1_filter = True
 
+if "questions_available" not in st.session_state:
+    st.session_state.questions_available = False
+
+# WHEN ADD A NEW STATE VARIABLE, UPDATE THE RESET FUNCTION on_click_start_over_again
+
 
 @st.cache_resource
 def get_subject_matter_1s():
@@ -134,12 +139,16 @@ def load_question():
     
     if len(response.data) > 0:
         st.session_state.question = response.data[0]
+        
+        st.session_state.questions_available = True
     
         print("----------------- QUESTION LOADED -----------------")
         print(st.session_state.question)
         print("----------------- QUESTION LOADED -----------------")
+        
     else:
         st.info("No more questions available")
+        st.session_state.no_more_questions_available = True
         st.session_state.page_flow = FLOW_RESULTS
 
     
@@ -178,22 +187,24 @@ def on_click_end_session():
 
 
 def show_question():
-    if st.session_state.question is None:
-        question = "Loading..."
-    else:
-        question = st.session_state.question["question"]
-        
-    st.write(
-        rf"""
-        #### {question}
-        """
-    )
-        
-    _, col2, col3, _ = st.columns([9,3,3,9])    
-    col2.button("False", key="btn_false", on_click=on_click_verify_answer, args=["FALSE"])
-    col3.button("True", key="btn_true", on_click=on_click_verify_answer, args=["TRUE"])
+    questions_available = st.session_state.questions_available
     
-    st.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+    if questions_available:
+        question = st.session_state.question["question"]
+            
+        st.write(
+            rf"""
+            #### {question}
+            """
+        )
+            
+        _, col2, col3, _ = st.columns([9,3,3,9])    
+        col2.button("False", key="btn_false", on_click=on_click_verify_answer, args=["FALSE"])
+        col3.button("True", key="btn_true", on_click=on_click_verify_answer, args=["TRUE"])
+        
+        st.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+    else:
+        st.button("Start over again", on_click=on_click_start_over_again)
     
 def show_explanation():
     if st.session_state.correct_answer:
@@ -226,6 +237,7 @@ def on_click_start_over_again():
     st.session_state.subject_matter_1s_list_selected = []
     st.session_state.topic_descriptions_list_selected = []
     st.session_state.use_subject_matter_1_filter = True
+    st.session_state.questions_available = False
     
 def show_results():
     st.write(
@@ -237,17 +249,18 @@ def show_results():
     answered_questions = st.session_state.answered_questions
     df = pd.DataFrame(answered_questions)
     
-    correct_mask = df['correct_answer'] == 1
-    correct_df = df.loc[ correct_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].sum().reset_index()
-    incorrect_mask = df['correct_answer'] == 0
-    incorrect_df = df.loc[ incorrect_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].count().reset_index()
-    incorrect_df = incorrect_df.rename(columns={"correct_answer": "incorrect_answer"})
-    
-    df_results = pd.merge(correct_df, incorrect_df, on=["subject_matter_1", "level"], how='outer')
-    df_results.fillna(0, inplace=True)
-    df_results["correct_answer"] = df_results["correct_answer"].astype(int)
-    df_results["incorrect_answer"] = df_results["incorrect_answer"].astype(int)
-    df_results
+    if df.shape[0] > 0:        
+        correct_mask = df['correct_answer'] == 1
+        correct_df = df.loc[ correct_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].sum().reset_index()
+        incorrect_mask = df['correct_answer'] == 0
+        incorrect_df = df.loc[ incorrect_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].count().reset_index()
+        incorrect_df = incorrect_df.rename(columns={"correct_answer": "incorrect_answer"})
+        
+        df_results = pd.merge(correct_df, incorrect_df, on=["subject_matter_1", "level"], how='outer')
+        df_results.fillna(0, inplace=True)
+        df_results["correct_answer"] = df_results["correct_answer"].astype(int)
+        df_results["incorrect_answer"] = df_results["incorrect_answer"].astype(int)
+        df_results
 
     st.button("Start over again", on_click=on_click_start_over_again)
     
