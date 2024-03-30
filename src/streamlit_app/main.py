@@ -63,6 +63,9 @@ if "subject_matter_1s_list_selected" not in st.session_state:
 if "topic_descriptions_list_selected" not in st.session_state:
     st.session_state.topic_descriptions_list_selected = []
 
+if "use_subject_matter_1_filter" not in st.session_state:
+    st.session_state.use_subject_matter_1_filter = True
+
 
 @st.cache_resource
 def get_subject_matter_1s():
@@ -82,9 +85,10 @@ def get_topic_descriptions():
     
     return data_list
 
-def on_click_start(subject_matter_1s_list_selected, topic_descriptions_list_selected):
+def on_click_start(subject_matter_1s_list_selected, topic_descriptions_list_selected, use_subject_matter_1_filter):
     st.session_state.subject_matter_1s_list_selected = subject_matter_1s_list_selected
     st.session_state.topic_descriptions_list_selected = topic_descriptions_list_selected
+    st.session_state.use_subject_matter_1_filter = use_subject_matter_1_filter
     
     st.session_state.page_flow = FLOW_QUESTION
 
@@ -100,22 +104,33 @@ def show_config_train():
     subject_matter_1s_list_selected = st.multiselect("Subject matter 1", subject_matter_1s_list, ["All"])
     topic_descriptions_list_selected = st.multiselect("Topic description", topic_descriptions_list, ["All"])
     
-    st.button("Start", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected])
+    st.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
+    st.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
 
 
 def load_question():
     print("----------------- LOADING QUESTION FUNCTION ------------------")
     
     subject_matter_1s_list_selected = st.session_state.subject_matter_1s_list_selected
+    topic_descriptions_list_selected = st.session_state.topic_descriptions_list_selected
+    use_subject_matter_1_filter = st.session_state.use_subject_matter_1_filter
     
-    if "All" in subject_matter_1s_list_selected:
-        subject_matter_1s_list_selected.remove("All")
-        
-    if len(subject_matter_1s_list_selected) > 0:
-        response = supabase.table('get_question').select("*").in_("subject_matter_1", subject_matter_1s_list_selected).execute()
-        # response = supabase.table('get_question').select("*").filter('subject_matter_1', 'in', subject_matter_1s_list_selected).execute()
-    else:
-        response = supabase.table('get_question').select("*").execute()
+    if use_subject_matter_1_filter:
+        if "All" in subject_matter_1s_list_selected:
+            subject_matter_1s_list_selected.remove("All")
+            
+        if len(subject_matter_1s_list_selected) > 0:
+            response = supabase.table('get_question').select("*").in_("subject_matter_1", subject_matter_1s_list_selected).execute()
+        else:
+            response = supabase.table('get_question').select("*").execute()
+    else:        
+        if "All" in topic_descriptions_list_selected:
+            topic_descriptions_list_selected.remove("All")
+            
+        if len(topic_descriptions_list_selected) > 0:
+            response = supabase.table('get_question').select("*").in_("topic_description", topic_descriptions_list_selected).execute()
+        else:
+            response = supabase.table('get_question').select("*").execute()
     
     if len(response.data) > 0:
         st.session_state.question = response.data[0]
@@ -200,6 +215,18 @@ def show_explanation():
     st.button("Elaborate more the explanation")
     st.button("Next", on_click=on_click_next)
     
+def on_click_start_over_again():
+    # reset app state
+    st.session_state.first_run = True
+    st.session_state.page_flow = FLOW_CONFIGURATION
+    st.session_state.question = None
+    st.session_state.show_explanation = False
+    st.session_state.correct_answer = None
+    st.session_state.answered_questions = []
+    st.session_state.subject_matter_1s_list_selected = []
+    st.session_state.topic_descriptions_list_selected = []
+    st.session_state.use_subject_matter_1_filter = True
+    
 def show_results():
     st.write(
         rf"""
@@ -222,7 +249,7 @@ def show_results():
     df_results["incorrect_answer"] = df_results["incorrect_answer"].astype(int)
     df_results
 
-    st.button("Start over again")
+    st.button("Start over again", on_click=on_click_start_over_again)
     
 
 match st.session_state.page_flow:
