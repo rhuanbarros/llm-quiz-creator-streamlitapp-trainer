@@ -17,6 +17,42 @@ import sys
 #                     # filename='app.log',  # Define o arquivo onde os logs serão gravados
 #                     # filemode='a')  # Define o modo de escrita do arquivo de log (append)
 
+import os
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = "quiz"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = "ls__b626f8e0970e43cca449e7a3510ac96b"  # Update to your API key
+
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+logging.info('Inicializando LLM e embedings')
+api_key_google = "AIzaSyC-V6lfROehy46ntB6zPZ7CJ8zNF3gDdO4"
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, google_api_key=api_key_google)
+embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=api_key_google)
+
+from langchain.prompts import PromptTemplate
+
+prompt_elaborate_more2 = PromptTemplate(
+    template="""
+                TASK CONTEXT:
+                I am studying machine learning practicing some questions.
+                
+                TASK DESCRIPTION:
+                I need you to act like a professor.
+                I need you to think critical and answer if the question provided is a TRUE statement or a FALSE.
+                You should give a elaborated explanation.
+                                
+                TASK REQUIREMENTS:
+                Use at least 2 sentences to explain your answer.
+                
+                QUESTION:
+                {question}
+            """,
+    input_variables=["question"]
+)
+
+
 
 
 url = "https://xoxlgvakygiyfijfeixu.supabase.co"
@@ -68,6 +104,9 @@ if "use_subject_matter_1_filter" not in st.session_state:
 
 if "questions_available" not in st.session_state:
     st.session_state.questions_available = False
+
+if "elaborate_more_response_content" not in st.session_state:
+    st.session_state.elaborate_more_response_content = ""
 
 # WHEN ADD A NEW STATE VARIABLE, UPDATE THE RESET FUNCTION on_click_start_over_again
 
@@ -212,7 +251,14 @@ def show_question():
         st.button("Start over again", on_click=on_click_start_over_again)
         
 def on_click_elaborate_more_the_explanation():
-    pass
+    chain = prompt_elaborate_more2 | llm
+    parameters = {
+        "question": st.session_state.question["question"]
+    }
+    response = chain.invoke(parameters)
+    print( response.content )
+    
+    st.info(f'{response.content}', icon="ℹ️")
     
 def show_explanation():
     st.write("")  # Empty string
@@ -241,7 +287,7 @@ def show_explanation():
     
     col2.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
     
-    col3.button("Elaborate more the explanation", on_click="on_click_elaborate_more_the_explanation")
+    col3.button("Elaborate more the explanation", on_click=on_click_elaborate_more_the_explanation)
     
     col4.button("Next", on_click=on_click_next)
     
