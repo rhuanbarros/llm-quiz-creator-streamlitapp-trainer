@@ -239,11 +239,16 @@ def show_question():
     questions_available = st.session_state.questions_available
     
     if questions_available:
-        question = st.session_state.question["question"]
+        question = st.session_state.question
             
         st.write(
-            rf"""
-            #### {question}
+            rf"""            
+            #### {question["question"]}
+            
+            - Subject matter 1: {question["subject_matter_1"]}
+            - Subject matter 2: {question["subject_matter_2"]}
+            - Topic description: {question["topic_description"]}
+            - Level: {question["level"]}
             """
         )
         
