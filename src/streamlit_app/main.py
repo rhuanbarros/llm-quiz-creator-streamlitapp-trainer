@@ -207,22 +207,26 @@ def load_question():
 def on_click_verify_answer(answer):
     question = st.session_state.question    
     
-    if answer == question["answer"]:
-        correct_answer = True
-        # if user selected the rigth answer, make the question not show again later
-        data, count = supabase.table('questions').update({"show_again": False}).eq('id', question["id"]).execute()
+    if answer != "DONT_KNOW":
+        if answer == question["answer"]:
+            correct_answer = True
+            # if user selected the rigth answer, make the question not show again later
+            data, count = supabase.table('questions').update({"show_again": False}).eq('id', question["id"]).execute()
+        else:
+            correct_answer = False
+            # if user selected the wrong answer, make the question show again later
+            data, count = supabase.table('questions').update({"show_again": True}).eq('id', question["id"]).execute()
+            
+        question["correct_answer"] = correct_answer
+        
+        st.session_state.answered_questions.append(question)
+            
+        data, count = supabase.table('answers').insert({"question_id": question["id"], "correct_answer": correct_answer}).execute()
+        
+        st.session_state.correct_answer = correct_answer
     else:
-        correct_answer = False
-        # if user selected the wrong answer, make the question show again later
-        data, count = supabase.table('questions').update({"show_again": True}).eq('id', question["id"]).execute()
+        st.session_state.correct_answer = None
         
-    question["correct_answer"] = correct_answer
-    
-    st.session_state.answered_questions.append(question)
-        
-    data, count = supabase.table('answers').insert({"question_id": question["id"], "correct_answer": correct_answer}).execute()
-    
-    st.session_state.correct_answer = correct_answer
     st.session_state.show_explanation = True
     
 def on_click_next():
@@ -257,9 +261,10 @@ def show_question():
         # in this case, the button is showed in other section of UI
         if st.session_state.show_explanation == False:
             
-            _, col2, col3, _ = st.columns([9,3,3,9])
+            _, col2, col3, col4, _ = st.columns([5,3,3,5,5])
             col2.button("False", key="btn_false", on_click=on_click_verify_answer, args=["FALSE"])
             col3.button("True", key="btn_true", on_click=on_click_verify_answer, args=["TRUE"])
+            col4.button("I don't know", key="btn_dont_know", on_click=on_click_verify_answer, args=["DONT_KNOW"])
         
             st.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
     else:
@@ -278,10 +283,11 @@ def on_click_elaborate_more_the_explanation():
 def show_explanation():
     st.write("")  # Empty string
     
-    if st.session_state.correct_answer:
-        st.success("Correct answer!")
-    else:
-        st.error("Wrong answer!")
+    if st.session_state.correct_answer != None:
+        if st.session_state.correct_answer:
+            st.success("Correct answer!")
+        else:
+            st.error("Wrong answer!")
         
     explanation = st.session_state.question["explanation"]
     
