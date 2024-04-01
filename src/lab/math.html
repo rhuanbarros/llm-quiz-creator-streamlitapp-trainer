@@ -1,0 +1,1830 @@
+<li><a href='#probability-theory' id='markdown-toc-probability-theory'>Probability theory</a>    <ul>
+    <li><a href='#concepts' id='markdown-toc-concepts'>Concepts</a>        <ul>
+        <li><a href='#chance-events' id='markdown-toc-chance-events'>Chance events</a></li>
+        <li><a href='#expectation' id='markdown-toc-expectation'>Expectation</a></li>
+        <li><a href='#variance' id='markdown-toc-variance'>Variance</a></li>
+        <li><a href='#set-theory' id='markdown-toc-set-theory'>Set Theory</a></li>
+        <li><a href='#counting' id='markdown-toc-counting'>Counting</a></li>
+        <li><a href='#conditional-probability' id='markdown-toc-conditional-probability'>Conditional Probability</a></li>
+      </ul>
+    </li>
+    <li><a href='#probability-distributions' id='markdown-toc-probability-distributions'>Probability distributions</a>        <ul>
+        <li><a href='#random-variables' id='markdown-toc-random-variables'>Random Variables</a></li>
+        <li><a href='#central-limit-theorem' id='markdown-toc-central-limit-theorem'>Central Limit Theorem</a></li>
+        <li><a href='#types-of-probability-distributions' id='markdown-toc-types-of-probability-distributions'>Types of probability distributions</a>            <ul>
+            <li><a href='#discrete' id='markdown-toc-discrete'>Discrete</a></li>
+            <li><a href='#continuous' id='markdown-toc-continuous'>Continuous</a></li>
+          </ul>
+        </li>
+        <li><a href='#bernoulli-distribution' id='markdown-toc-bernoulli-distribution'>Bernoulli distribution</a>            <ul>
+            <li><a href='#pmf' id='markdown-toc-pmf'>PMF</a></li>
+            <li><a href='#cdf' id='markdown-toc-cdf'>CDF</a></li>
+            <li><a href='#iid-bernoulli-trials' id='markdown-toc-iid-bernoulli-trials'>iid Bernoulli trials</a></li>
+            <li><a href='#binomial-trials' id='markdown-toc-binomial-trials'>Binomial trials</a></li>
+            <li><a href='#the-selection-problem' id='markdown-toc-the-selection-problem'>The selection problem</a></li>
+            <li><a href='#example-justification-of-the-binomial-likelihood' id='markdown-toc-example-justification-of-the-binomial-likelihood'>Example justification of the binomial likelihood</a></li>
+            <li><a href='#example' id='markdown-toc-example'>Example</a></li>
+          </ul>
+        </li>
+        <li><a href='#gaussiannormal-distribution' id='markdown-toc-gaussiannormal-distribution'>Gaussian/normal distribution</a>            <ul>
+            <li><a href='#pdf' id='markdown-toc-pdf'>PDF</a></li>
+            <li><a href='#cdf-1' id='markdown-toc-cdf-1'>CDF</a></li>
+            <li><a href='#standard-normal-distribution' id='markdown-toc-standard-normal-distribution'>Standard normal distribution</a></li>
+            <li><a href='#example-1' id='markdown-toc-example-1'>Example 1</a></li>
+            <li><a href='#example-2' id='markdown-toc-example-2'>Example 2</a></li>
+            <li><a href='#facts-about-the-normal-density' id='markdown-toc-facts-about-the-normal-density'>Facts about the normal density</a></li>
+            <li><a href='#other-properties' id='markdown-toc-other-properties'>Other properties</a></li>
+          </ul>
+        </li>
+        <li><a href='#poisson-distribution' id='markdown-toc-poisson-distribution'>Poisson distribution</a>            <ul>
+            <li><a href='#pmf-1' id='markdown-toc-pmf-1'>PMF</a></li>
+            <li><a href='#cdf-2' id='markdown-toc-cdf-2'>CDF</a></li>
+            <li><a href='#use-cases-for-the-poisson-distribution' id='markdown-toc-use-cases-for-the-poisson-distribution'>Use-cases for the Poisson distribution</a></li>
+            <li><a href='#poisson-derivation' id='markdown-toc-poisson-derivation'>Poisson derivation</a></li>
+            <li><a href='#rates-and-poisson-random-variables' id='markdown-toc-rates-and-poisson-random-variables'>Rates and Poisson random variables</a></li>
+            <li><a href='#poisson-approximation-to-the-binomial' id='markdown-toc-poisson-approximation-to-the-binomial'>Poisson approximation to the binomial</a></li>
+            <li><a href='#example-1' id='markdown-toc-example-1'>Example</a></li>
+            <li><a href='#example-poisson-approximation-to-the-binomial' id='markdown-toc-example-poisson-approximation-to-the-binomial'>Example: Poisson approximation to the binomial</a></li>
+          </ul>
+        </li>
+        <li><a href='#uniform-distribution' id='markdown-toc-uniform-distribution'>Uniform distribution</a>            <ul>
+            <li><a href='#pdf-1' id='markdown-toc-pdf-1'>PDF</a></li>
+            <li><a href='#cdf-3' id='markdown-toc-cdf-3'>CDF</a></li>
+          </ul>
+        </li>
+        <li><a href='#geometric-distribution' id='markdown-toc-geometric-distribution'>Geometric distribution</a></li>
+        <li><a href='#students-t-distribution' id='markdown-toc-students-t-distribution'>Student’s t-distribution</a></li>
+        <li><a href='#chi-squared-distribution' id='markdown-toc-chi-squared-distribution'>Chi-squared distribution</a></li>
+        <li><a href='#exponential-distribution' id='markdown-toc-exponential-distribution'>Exponential distribution</a></li>
+        <li><a href='#f-distribution' id='markdown-toc-f-distribution'>F distribution</a></li>
+        <li><a href='#gamma-distribution' id='markdown-toc-gamma-distribution'>Gamma distribution</a></li>
+        <li><a href='#beta-distribution' id='markdown-toc-beta-distribution'>Beta distribution</a></li>
+      </ul>
+    </li>
+    <li><a href='#frequentist-inference' id='markdown-toc-frequentist-inference'>Frequentist inference</a>        <ul>
+        <li><a href='#point-estimation' id='markdown-toc-point-estimation'>Point estimation</a></li>
+        <li><a href='#confidence-intervals' id='markdown-toc-confidence-intervals'>Confidence intervals</a></li>
+        <li><a href='#the-bootstrap' id='markdown-toc-the-bootstrap'>The Bootstrap</a></li>
+      </ul>
+    </li>
+    <li><a href='#bayesian-inference' id='markdown-toc-bayesian-inference'>Bayesian inference</a>        <ul>
+        <li><a href='#bayes-theorem' id='markdown-toc-bayes-theorem'>Bayes’ Theorem</a></li>
+        <li><a href='#likelihood-function' id='markdown-toc-likelihood-function'>Likelihood Function</a></li>
+        <li><a href='#prior-to-posterior' id='markdown-toc-prior-to-posterior'>Prior to Posterior</a></li>
+      </ul>
+    </li>
+    <li><a href='#regression-analysis' id='markdown-toc-regression-analysis'>Regression Analysis</a>        <ul>
+        <li><a href='#ordinary-least-squares' id='markdown-toc-ordinary-least-squares'>Ordinary Least Squares</a></li>
+        <li><a href='#correlation' id='markdown-toc-correlation'>Correlation</a></li>
+        <li><a href='#analysis-of-variance' id='markdown-toc-analysis-of-variance'>Analysis of Variance</a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li><a href='#trigonometry' id='markdown-toc-trigonometry'>Trigonometry</a>    <ul>
+    <li><a href='#ratios' id='markdown-toc-ratios'>Ratios</a></li>
+    <li><a href='#graphical-view-of-sin-and-cos' id='markdown-toc-graphical-view-of-sin-and-cos'>Graphical view of sin and cos</a></li>
+  </ul>
+</li>
+<li><a href='#references-and-credits' id='markdown-toc-references-and-credits'>References and Credits</a></li>
+<li><a href='#citation' id='markdown-toc-citation'>Citation</a></li>
+</ul>
+
+<p><br />
+<a href='https://colab.research.google.com/github/amanchadha/aman-ai/blob/master/math.ipynb' target='new'>
+<img class='colab-badge' src='../assets/colab-open.svg' alt='Colab Notebook' align='center' style='width: 117px;' />
+</a></p>
+
+<h2 id='linear-algebra'>Linear Algebra</h2>
+
+<ul>
+<li>Linear Algebra is the branch of mathematics that studies <a href='https://en.wikipedia.org/wiki/Vector_space'>vector spaces</a> and linear transformations between vector spaces, such as rotating a shape, scaling it up or down, translating it (i.e., moving it), etc.</li>
+<li>Machine Learning relies heavily on Linear Algebra, so it is essential to understand what vectors and matrices are, what operations you can perform with them, and how they can be useful.</li>
+</ul>
+
+<h3 id='vectors'>Vectors</h3>
+
+<h4 id='definition'>Definition</h4>
+
+<ul>
+<li>
+  <p>A vector is a quantity defined by a magnitude and a direction. For example, a rocket’s velocity is a 3-dimensional vector: its magnitude is the speed of the rocket, and its direction is (hopefully) up. A vector can be represented by an array of numbers called <em>scalars</em>. Each scalar corresponds to the magnitude of the vector with regards to each dimension.</p>
+</li>
+<li>
+  <p>For example, say the rocket is going up at a slight angle: it has a vertical speed of 5,000 m/s, and also a slight speed towards the East at 10 m/s, and a slight speed towards the North at 50 m/s. The rocket’s velocity may be represented by the following vector:</p>
+</li>
+</ul>
+
+\[\text{velocity} = \left[\begin{array}{c}
+10 \\
+50 \\
+5000 \\
+\end{array}\right]\]
+
+<ul>
+<li>
+  <p>Note: by convention vectors are generally presented in the form of columns. Also, vector names are generally lowercase to distinguish them from matrices (which we will discuss below) and in bold (when possible) to distinguish them from simple scalar values such as \(meters\_per\_second = 5026\).</p>
+</li>
+<li>
+  <p>A list of \(N\) numbers may also represent the coordinates of a point in an \(N\)-dimensional space, so it is quite frequent to represent vectors as simple points instead of arrows. A vector with 1 element may be represented as an arrow or a point on an axis, a vector with 2 elements is an arrow or a point on a plane, a vector with 3 elements is an arrow or point in space, and a vector with \(N\) elements is an arrow or a point in an \(N\)-dimensional space… which most people find hard to imagine.</p>
+</li>
+</ul>
+
+<h4 id='purpose'>Purpose</h4>
+
+<ul>
+<li>Vectors have many purposes in Machine Learning, most notably to represent observations and predictions. For example, say we built a Machine Learning system to classify videos into 3 categories (good, spam, clickbait) based on what we know about them. For each video, we would have a vector representing what we know about it, such as:</li>
+</ul>
+
+\[\text{video} = \left[\begin{array}{c}
+10.5 \\
+5.2 \\
+3.25 \\
+7.0
+\end{array}\right]\]
+
+<ul>
+<li>
+  <p>This vector could represent a video that lasts 10.5 minutes, but only 5.2% viewers watch for more than a minute, it gets 3.25 views per day on average, and it was flagged 7 times as spam. As you can see, each axis may have a different meaning.</p>
+</li>
+<li>
+  <p>Based on this vector our Machine Learning system may predict that there is an 80% probability that it is a spam video, 18% that it is click-bait, and 2% that it is a good video. This could be represented as the following vector:</p>
+</li>
+</ul>
+
+\[\text{class_probabilities} = \left[\begin{array}{c}
+0.80 \\
+0.18 \\
+0.02
+\end{array}\right]\]
+
+<h3 id='vectors-in-python'>Vectors in python</h3>
+
+<ul>
+<li>In python, a vector can be represented in many ways, the simplest being a regular python list of numbers:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='p'>[</span><span class='mf'>10.5</span><span class='p'>,</span> <span class='mf'>5.2</span><span class='p'>,</span> <span class='mf'>3.25</span><span class='p'>,</span> <span class='mf'>7.0</span><span class='p'>]</span>
+</code></pre></div></div>
+
+<ul>
+<li>Since we plan to do quite a lot of scientific calculations, it is much better to use NumPy’s <code class='language-plaintext highlighter-rouge'>ndarray</code>, which provides a lot of convenient and optimized implementations of essential mathematical operations on vectors (for more details about NumPy, check out the <a href='../numpy'>NumPy tutorial</a>). For example:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='kn'>import</span> <span class='nn'>numpy</span> <span class='k'>as</span> <span class='n'>np</span>
+<span class='n'>video</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mf'>10.5</span><span class='p'>,</span> <span class='mf'>5.2</span><span class='p'>,</span> <span class='mf'>3.25</span><span class='p'>,</span> <span class='mf'>7.0</span><span class='p'>])</span>
+<span class='n'>video</span>
+</code></pre></div></div>
+
+<ul>
+<li>The size of a vector can be obtained using the <code class='language-plaintext highlighter-rouge'>size</code> attribute:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>video</span><span class='p'>.</span><span class='n'>size</span>
+</code></pre></div></div>
+
+<ul>
+<li>
+  <p>The \(i^{th}\) element (also called <em>entry</em> or <em>item</em>) of a vector \(\textbf{v}\) is noted \(\textbf{v}_i\).</p>
+</li>
+<li>
+  <p>Note that indices in mathematics generally start at 1, but in programming they usually start at 0. So to access \(\textbf{video}_3\) programmatically, we would write:</p>
+</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>video</span><span class='p'>[</span><span class='mi'>2</span><span class='p'>]</span> <span class='c1'>## 3rd element
+</span></code></pre></div></div>
+
+<h2 id='plotting-vectors'>Plotting vectors</h2>
+
+<ul>
+<li>To plot vectors, we will use matplotlib, so let’s start by importing it (for details about Matplotlib, check out our <a href='../matplotlib'>Matplotlib tutorial</a>):</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='kn'>import</span> <span class='nn'>matplotlib.pyplot</span> <span class='k'>as</span> <span class='n'>plt</span>
+</code></pre></div></div>
+
+<ul>
+<li>In a Jupyter/Colab notebook, we can simply output the graphs within the notebook itself by running the <code class='language-plaintext highlighter-rouge'>%matplotlib inline</code> magic command. Run this cell if you’re viewing this in Colab:</li>
+</ul>
+
+<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'><code>%matplotlib inline
+</code></pre></div></div>
+
+<h3 id='2d-vectors'>2D vectors</h3>
+
+<ul>
+<li>Now, import NumPy for array containers to handle the input data that we’re looking to plot:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='kn'>import</span> <span class='nn'>numpy</span> <span class='k'>as</span> <span class='n'>np</span>
+</code></pre></div></div>
+
+<ul>
+<li>Let’s create a couple very simple 2D vectors to plot:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>u</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>2</span><span class='p'>,</span> <span class='mi'>5</span><span class='p'>])</span>
+<span class='n'>v</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>3</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>])</span>
+</code></pre></div></div>
+
+<ul>
+<li>These vectors each have 2 elements, so they can easily be represented graphically on a 2D graph, for example as points:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span> <span class='o'>=</span> <span class='nb'>zip</span><span class='p'>(</span><span class='n'>u</span><span class='p'>,</span> <span class='n'>v</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>scatter</span><span class='p'>(</span><span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='p'>[</span><span class='s'>'r'</span><span class='p'>,</span><span class='s'>'b'</span><span class='p'>])</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>axis</span><span class='p'>([</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>9</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>,</span> <span class='mi'>6</span><span class='p'>])</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>grid</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>show</span><span class='p'>()</span>
+</code></pre></div></div>
+
+<p><img src='/primers/assets/math/2.jpg' alt='' /></p>
+
+<h3 id='3d-vectors'>3D vectors</h3>
+
+<ul>
+<li>Plotting 3D vectors is also relatively straightforward. First let’s create two 3D vectors:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='kn'>import</span> <span class='nn'>numpy</span> <span class='k'>as</span> <span class='n'>np</span>
+
+<span class='n'>a</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>,</span> <span class='mi'>8</span><span class='p'>])</span>
+<span class='n'>b</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>5</span><span class='p'>,</span> <span class='mi'>6</span><span class='p'>,</span> <span class='mi'>3</span><span class='p'>])</span>
+</code></pre></div></div>
+
+<ul>
+<li>Now let’s plot them using matplotlib’s <code class='language-plaintext highlighter-rouge'>Axes3D</code>. Note that we’ll be using <code class='language-plaintext highlighter-rouge'>mpl_toolkits</code> to carry out this step (and <code class='language-plaintext highlighter-rouge'>matplotlib</code> does not load <code class='language-plaintext highlighter-rouge'>mpl_toolkits</code> as a dependency during installation) so let’s load it up first using <code class='language-plaintext highlighter-rouge'>pip install --upgrade matplotlib</code> (if you’re running this in a Jupyter notebook, use <code class='language-plaintext highlighter-rouge'>!pip install --upgrade matplotlib</code>).</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='kn'>import</span> <span class='nn'>matplotlib.pyplot</span> <span class='k'>as</span> <span class='n'>plt</span>
+<span class='kn'>from</span> <span class='nn'>mpl_toolkits.mplot3d</span> <span class='kn'>import</span> <span class='n'>Axes3D</span>
+
+<span class='n'>subplot3d</span> <span class='o'>=</span> <span class='n'>plt</span><span class='p'>.</span><span class='n'>subplot</span><span class='p'>(</span><span class='mi'>111</span><span class='p'>,</span> <span class='n'>projection</span><span class='o'>=</span><span class='s'>'3d'</span><span class='p'>)</span>
+<span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span><span class='p'>,</span> <span class='n'>z_coords</span> <span class='o'>=</span> <span class='nb'>zip</span><span class='p'>(</span><span class='n'>a</span><span class='p'>,</span><span class='n'>b</span><span class='p'>)</span>
+<span class='n'>subplot3d</span><span class='p'>.</span><span class='n'>scatter</span><span class='p'>(</span><span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span><span class='p'>,</span> <span class='n'>z_coords</span><span class='p'>)</span>
+<span class='n'>subplot3d</span><span class='p'>.</span><span class='n'>set_zlim3d</span><span class='p'>([</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>9</span><span class='p'>])</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>show</span><span class='p'>()</span>
+</code></pre></div></div>
+
+<p><img src='/primers/assets/math/3.jpg' alt='' /></p>
+
+<ul>
+<li>It is a bit hard to visualize exactly where in space these two points are, so let’s add vertical lines. We’ll create a small convenience function to plot a list of 3D vectors with vertical lines attached:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='k'>def</span> <span class='nf'>plot_vectors3d</span><span class='p'>(</span><span class='n'>ax</span><span class='p'>,</span> <span class='n'>vectors3d</span><span class='p'>,</span> <span class='n'>z0</span><span class='p'>,</span> <span class='o'>**</span><span class='n'>options</span><span class='p'>):</span>
+  <span class='k'>for</span> <span class='n'>v</span> <span class='ow'>in</span> <span class='n'>vectors3d</span><span class='p'>:</span>
+      <span class='n'>x</span><span class='p'>,</span> <span class='n'>y</span><span class='p'>,</span> <span class='n'>z</span> <span class='o'>=</span> <span class='n'>v</span>
+      <span class='n'>ax</span><span class='p'>.</span><span class='n'>plot</span><span class='p'>([</span><span class='n'>x</span><span class='p'>,</span><span class='n'>x</span><span class='p'>],</span> <span class='p'>[</span><span class='n'>y</span><span class='p'>,</span><span class='n'>y</span><span class='p'>],</span> <span class='p'>[</span><span class='n'>z0</span><span class='p'>,</span> <span class='n'>z</span><span class='p'>],</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'gray'</span><span class='p'>,</span> <span class='n'>linestyle</span><span class='o'>=</span><span class='s'>'dotted'</span><span class='p'>,</span> <span class='n'>marker</span><span class='o'>=</span><span class='s'>'.'</span><span class='p'>)</span>
+  <span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span><span class='p'>,</span> <span class='n'>z_coords</span> <span class='o'>=</span> <span class='nb'>zip</span><span class='p'>(</span><span class='o'>*</span><span class='n'>vectors3d</span><span class='p'>)</span>
+  <span class='n'>ax</span><span class='p'>.</span><span class='n'>scatter</span><span class='p'>(</span><span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span><span class='p'>,</span> <span class='n'>z_coords</span><span class='p'>,</span> <span class='o'>**</span><span class='n'>options</span><span class='p'>)</span>
+
+<span class='n'>subplot3d</span> <span class='o'>=</span> <span class='n'>plt</span><span class='p'>.</span><span class='n'>subplot</span><span class='p'>(</span><span class='mi'>111</span><span class='p'>,</span> <span class='n'>projection</span><span class='o'>=</span><span class='s'>'3d'</span><span class='p'>)</span>
+<span class='n'>subplot3d</span><span class='p'>.</span><span class='n'>set_zlim</span><span class='p'>([</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>9</span><span class='p'>])</span>
+<span class='n'>plot_vectors3d</span><span class='p'>(</span><span class='n'>subplot3d</span><span class='p'>,</span> <span class='p'>[</span><span class='n'>a</span><span class='p'>,</span><span class='n'>b</span><span class='p'>],</span> <span class='mi'>0</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='p'>(</span><span class='s'>'r'</span><span class='p'>,</span><span class='s'>'b'</span><span class='p'>))</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>show</span><span class='p'>()</span>
+</code></pre></div></div>
+
+<p><img src='/primers/assets/math/4.jpg' alt='' /></p>
+
+<h3 id='norm'>Norm</h3>
+
+<ul>
+<li>The norm of a vector \(\textbf{u}\), noted \(\mid \mid \textbf{u} \mid \mid \), is a measure of the length (a.k.a. the magnitude) of \(\textbf{u}\). There are multiple possible norms, but the most common one (and the only one we will discuss here) is the Euclidian norm, which is defined as:</li>
+</ul>
+
+\[\left \Vert \textbf{u} \right \| = \sqrt{\sum_{i}{\textbf{u}_i}^2}\]
+
+<ul>
+<li>We could implement this easily in pure python, recalling that \(\sqrt x = x^{\frac{1}{2}}\).</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='k'>def</span> <span class='nf'>vector_norm</span><span class='p'>(</span><span class='n'>vector</span><span class='p'>):</span>
+  <span class='n'>squares</span> <span class='o'>=</span> <span class='p'>[</span><span class='n'>element</span><span class='o'>**</span><span class='mi'>2</span> <span class='k'>for</span> <span class='n'>element</span> <span class='ow'>in</span> <span class='n'>vector</span><span class='p'>]</span>
+  <span class='k'>return</span> <span class='nb'>sum</span><span class='p'>(</span><span class='n'>squares</span><span class='p'>)</span><span class='o'>**</span><span class='mf'>0.5</span>
+
+<span class='n'>u</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>2</span><span class='p'>,</span> <span class='mi'>5</span><span class='p'>])</span>
+<span class='k'>print</span><span class='p'>(</span><span class='s'>'||'</span><span class='p'>,</span> <span class='n'>u</span><span class='p'>,</span> <span class='s'>'|| ='</span><span class='p'>)</span>
+<span class='n'>vector_norm</span><span class='p'>(</span><span class='n'>u</span><span class='p'>)</span> <span class='c1'># Prints 5.385164807134504
+</span></code></pre></div></div>
+
+<ul>
+<li>However, it is much more efficient to use NumPy’s <code class='language-plaintext highlighter-rouge'>norm</code> function, available in the <code class='language-plaintext highlighter-rouge'>linalg</code> (<strong>Lin</strong>ear <strong>Alg</strong>ebra) module:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='kn'>import</span> <span class='nn'>numpy.linalg</span> <span class='k'>as</span> <span class='n'>LA</span>
+<span class='n'>LA</span><span class='p'>.</span><span class='n'>norm</span><span class='p'>(</span><span class='n'>u</span><span class='p'>)</span> <span class='c1'># Prints 5.385164807134504
+</span></code></pre></div></div>
+
+<ul>
+<li>Let’s plot a little diagram to confirm that the length of vector \(\textbf{v}\) is indeed \(\approx5.4\):</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>radius</span> <span class='o'>=</span> <span class='n'>LA</span><span class='p'>.</span><span class='n'>norm</span><span class='p'>(</span><span class='n'>u</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>gca</span><span class='p'>().</span><span class='n'>add_artist</span><span class='p'>(</span><span class='n'>plt</span><span class='p'>.</span><span class='n'>Circle</span><span class='p'>((</span><span class='mi'>0</span><span class='p'>,</span><span class='mi'>0</span><span class='p'>),</span> <span class='n'>radius</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'#DDDDDD'</span><span class='p'>))</span>
+
+<span class='k'>def</span> <span class='nf'>plot_vector2d</span><span class='p'>(</span><span class='n'>vector2d</span><span class='p'>,</span> <span class='n'>origin</span><span class='o'>=</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>],</span> <span class='o'>**</span><span class='n'>options</span><span class='p'>):</span>
+  <span class='k'>return</span> <span class='n'>plt</span><span class='p'>.</span><span class='n'>arrow</span><span class='p'>(</span><span class='n'>origin</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>],</span> <span class='n'>origin</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>],</span> <span class='n'>vector2d</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>],</span> <span class='n'>vector2d</span><span class='p'>[</span><span class='mi'>1</span><span class='p'>],</span> <span class='n'>head_width</span><span class='o'>=</span><span class='mf'>0.2</span><span class='p'>,</span> 
+         <span class='n'>head_length</span><span class='o'>=</span><span class='mf'>0.3</span><span class='p'>,</span> <span class='n'>length_includes_head</span><span class='o'>=</span><span class='bp'>True</span><span class='p'>,</span> <span class='o'>**</span><span class='n'>options</span><span class='p'>)</span>
+
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>u</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'red'</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>axis</span><span class='p'>([</span><span class='mi'>0</span><span class='p'>,</span> <span class='mf'>8.7</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>,</span> <span class='mi'>6</span><span class='p'>])</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>grid</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>show</span><span class='p'>()</span>
+</code></pre></div></div>
+
+<p><img src='/primers/assets/math/5.jpg' alt='' /></p>
+
+<ul>
+<li>Looks about right!</li>
+</ul>
+
+<h3 id='addition'>Addition</h3>
+
+<ul>
+<li>Vectors of same size can be added together. Addition is performed <em>elementwise</em>:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='kn'>import</span> <span class='nn'>numpy</span> <span class='k'>as</span> <span class='n'>np</span>
+
+<span class='n'>u</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>2</span><span class='p'>,</span> <span class='mi'>5</span><span class='p'>])</span>
+<span class='n'>v</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>3</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>])</span>
+
+<span class='k'>print</span><span class='p'>(</span><span class='s'>' '</span><span class='p'>,</span> <span class='n'>u</span><span class='p'>)</span>
+<span class='k'>print</span><span class='p'>(</span><span class='s'>'+'</span><span class='p'>,</span> <span class='n'>v</span><span class='p'>)</span>
+<span class='k'>print</span><span class='p'>(</span><span class='s'>'-'</span><span class='o'>*</span><span class='mi'>10</span><span class='p'>)</span>
+<span class='n'>u</span> <span class='o'>+</span> <span class='n'>v</span>
+</code></pre></div></div>
+
+<ul>
+<li>which outputs:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code>  <span class='p'>[</span><span class='mi'>2</span> <span class='mi'>5</span><span class='p'>]</span>
+<span class='o'>+</span> <span class='p'>[</span><span class='mi'>3</span> <span class='mi'>1</span><span class='p'>]</span>
+<span class='o'>----------</span>
+<span class='n'>array</span><span class='p'>([</span><span class='mi'>5</span><span class='p'>,</span> <span class='mi'>6</span><span class='p'>])</span>
+</code></pre></div></div>
+
+<ul>
+<li>Let’s look at what vector addition looks like graphically:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>u</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>)</span>
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>v</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'b'</span><span class='p'>)</span>
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>v</span><span class='p'>,</span> <span class='n'>origin</span><span class='o'>=</span><span class='n'>u</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'b'</span><span class='p'>,</span> <span class='n'>linestyle</span><span class='o'>=</span><span class='s'>'dotted'</span><span class='p'>)</span>
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>u</span><span class='p'>,</span> <span class='n'>origin</span><span class='o'>=</span><span class='n'>v</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>linestyle</span><span class='o'>=</span><span class='s'>'dotted'</span><span class='p'>)</span>
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>u</span><span class='o'>+</span><span class='n'>v</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'g'</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>axis</span><span class='p'>([</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>9</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>,</span> <span class='mi'>7</span><span class='p'>])</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mf'>0.7</span><span class='p'>,</span> <span class='mi'>3</span><span class='p'>,</span> <span class='s'>'u'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>,</span> <span class='mi'>3</span><span class='p'>,</span> <span class='s'>'u'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mf'>1.8</span><span class='p'>,</span> <span class='mf'>0.2</span><span class='p'>,</span> <span class='s'>'v'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'b'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mf'>3.1</span><span class='p'>,</span> <span class='mf'>5.6</span><span class='p'>,</span> <span class='s'>'v'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'b'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mf'>2.4</span><span class='p'>,</span> <span class='mf'>2.5</span><span class='p'>,</span> <span class='s'>'u+v'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'g'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>grid</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>show</span><span class='p'>()</span>
+</code></pre></div></div>
+
+<p><img src='/primers/assets/math/6.png' alt='' /></p>
+
+<ul>
+<li>Vector addition is <strong>commutative</strong>, meaning that \(\textbf{u} + \textbf{v} = \textbf{v} + \textbf{u}\). You can see it on the previous image: following \(\textbf{u}\) <em>then</em> \(\textbf{v}\) leads to the same point as following \(\textbf{v}\) <em>then</em> \(\textbf{u}\).</li>
+<li>
+  <p>Vector addition is also <strong>associative</strong>, meaning that \(\textbf{u} + (\textbf{v} + \textbf{w}) = (\textbf{u} + \textbf{v}) + \textbf{w}\).</p>
+</li>
+<li>If you have a shape defined by a number of points (vectors), and you add a vector \(\textbf{v}\) to all of these points, then the whole shape gets shifted by \(\textbf{v}\). This is called a <a href='https://en.wikipedia.org/wiki/Translation_%28geometry%29'>geometric translation</a>:</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>t1</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>2</span><span class='p'>,</span> <span class='mf'>0.25</span><span class='p'>])</span>
+<span class='n'>t2</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mf'>2.5</span><span class='p'>,</span> <span class='mf'>3.5</span><span class='p'>])</span>
+<span class='n'>t3</span> <span class='o'>=</span> <span class='n'>np</span><span class='p'>.</span><span class='n'>array</span><span class='p'>([</span><span class='mi'>1</span><span class='p'>,</span> <span class='mi'>2</span><span class='p'>])</span>
+
+<span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span> <span class='o'>=</span> <span class='nb'>zip</span><span class='p'>(</span><span class='n'>t1</span><span class='p'>,</span> <span class='n'>t2</span><span class='p'>,</span> <span class='n'>t3</span><span class='p'>,</span> <span class='n'>t1</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>plot</span><span class='p'>(</span><span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span><span class='p'>,</span> <span class='s'>'c--'</span><span class='p'>,</span> <span class='n'>x_coords</span><span class='p'>,</span> <span class='n'>y_coords</span><span class='p'>,</span> <span class='s'>'co'</span><span class='p'>)</span>
+
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>v</span><span class='p'>,</span> <span class='n'>t1</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>linestyle</span><span class='o'>=</span><span class='s'>':'</span><span class='p'>)</span>
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>v</span><span class='p'>,</span> <span class='n'>t2</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>linestyle</span><span class='o'>=</span><span class='s'>':'</span><span class='p'>)</span>
+<span class='n'>plot_vector2d</span><span class='p'>(</span><span class='n'>v</span><span class='p'>,</span> <span class='n'>t3</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>linestyle</span><span class='o'>=</span><span class='s'>':'</span><span class='p'>)</span>
+
+<span class='n'>t1b</span> <span class='o'>=</span> <span class='n'>t1</span> <span class='o'>+</span> <span class='n'>v</span>
+<span class='n'>t2b</span> <span class='o'>=</span> <span class='n'>t2</span> <span class='o'>+</span> <span class='n'>v</span>
+<span class='n'>t3b</span> <span class='o'>=</span> <span class='n'>t3</span> <span class='o'>+</span> <span class='n'>v</span>
+
+<span class='n'>x_coords_b</span><span class='p'>,</span> <span class='n'>y_coords_b</span> <span class='o'>=</span> <span class='nb'>zip</span><span class='p'>(</span><span class='n'>t1b</span><span class='p'>,</span> <span class='n'>t2b</span><span class='p'>,</span> <span class='n'>t3b</span><span class='p'>,</span> <span class='n'>t1b</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>plot</span><span class='p'>(</span><span class='n'>x_coords_b</span><span class='p'>,</span> <span class='n'>y_coords_b</span><span class='p'>,</span> <span class='s'>'b-'</span><span class='p'>,</span> <span class='n'>x_coords_b</span><span class='p'>,</span> <span class='n'>y_coords_b</span><span class='p'>,</span> <span class='s'>'bo'</span><span class='p'>)</span>
+
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mi'>4</span><span class='p'>,</span> <span class='mf'>4.2</span><span class='p'>,</span> <span class='s'>'v'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>,</span> <span class='mf'>2.3</span><span class='p'>,</span> <span class='s'>'v'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>text</span><span class='p'>(</span><span class='mf'>3.5</span><span class='p'>,</span> <span class='mf'>0.4</span><span class='p'>,</span> <span class='s'>'v'</span><span class='p'>,</span> <span class='n'>color</span><span class='o'>=</span><span class='s'>'r'</span><span class='p'>,</span> <span class='n'>fontsize</span><span class='o'>=</span><span class='mi'>18</span><span class='p'>)</span>
+
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>axis</span><span class='p'>([</span><span class='mi'>0</span><span class='p'>,</span> <span class='mi'>6</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>,</span> <span class='mi'>5</span><span class='p'>])</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>grid</span><span class='p'>()</span>
+<span class='n'>plt</span><span class='p'>.</span><span class='n'>show</span><span class='p'>()</span>
+</code></pre></div></div>
+
+<p><img src='/primers/assets/math/7.png' alt='' /></p>
+
+<ul>
+<li>Finally, subtracting a vector is like adding the opposite vector.</li>
+</ul>
+
+<h2 id='differential-calculus'>Differential Calculus</h2>
+
+<ul>
+<li>Calculus is the study of continuous change. It has two major subfields: <em>differential calculus</em>, which studies the rate of change of functions, and <em>integral calculus</em>, which studies the area under the curve. In this notebook, we will discuss the former.</li>
+<li>Differential calculus is at the core of deep learning, so it is important to understand what derivatives and gradients are, how they are used in deep learning, and understand what their limitations are.</li>
+</ul>
+
+<h3 id='slope-of-a-straight-line'>Slope of a straight line</h3>
+
+<ul>
+<li>The slope of a (non-vertical) straight line can be calculated by taking any two points \(\mathrm{A}\) and \(\mathrm{B}\) on the line, and computing the “rise over run”:</li>
+</ul>
+
+\[slope = \dfrac{\Delta y}{\Delta x} = \dfrac{height}{width} = \dfrac{rise}{run} = \dfrac{y_\mathrm{B} - y_\mathrm{A}}{x_\mathrm{B} - x_\mathrm{A}}\]
+
+<ul>
+<li>In this example, the height (rise) is 3, and the width (run) is 6, so the slope is \(\frac{3}{6} = 0.5\).</li>
+</ul>
+
+<p><img src='../assets/math/slope.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<h3 id='defining-the-slope-of-a-curve'>Defining the slope of a curve</h3>
+
+<ul>
+<li>Now, let’s try to figure out how we can compute the slope of something else than a straight line. For example, let’s consider the curve defined by \(y = f(x) = x^2\):</li>
+</ul>
+
+<p><img src='../assets/math/slope_curve.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<ul>
+<li>
+  <p>Obviously, the slope varies: on the left (i.e., when \(x&lt;0\)), the slope is negative (i.e., when we move from left to right, the curve goes down), while on the right (i.e., when \(x&gt;0\)) the slope is positive (i.e., when we move from left to right, the curve goes up). At the point \(x=0\), the slope is equal to 0 (i.e., the curve is locally flat). The fact that the slope is 0 when we reach a minimum (or indeed a maximum) is crucially important, and we will come back to it later.</p>
+</li>
+<li>
+  <p>How can we put numbers on these intuitions? Well, say we want to estimate the slope of the curve at a point \(\mathrm{A}\), we can do this by taking another point \(\mathrm{B}\) on the curve, not too far away, and then computing the slope between these two points.</p>
+</li>
+<li>
+  <p>As you can see, when point \(\mathrm{B}\) is very close to point \(\mathrm{A}\), the \((\mathrm{AB})\) line becomes almost indistinguishable from the curve itself (at least locally around point \(\mathrm{A}\)). The \((\mathrm{AB})\) line gets closer and closer to the <strong>tangent</strong> line to the curve at point \(\mathrm{A}\): this is the best linear approximation of the curve at point \(\mathrm{A}\).</p>
+</li>
+<li>
+  <p>So it makes sense to define the slope of the curve at point \(\mathrm{A}\) as the slope that the \(\mathrm{(AB)}\) line approaches when \(\mathrm{B}\) gets infinitely close to \(\mathrm{A}\). This slope is called the <strong>derivative</strong> of the function \(f\) at \(x=x_\mathrm{A}\). For example, the derivative of the function \(f(x)=x^2\) at \(x=x_\mathrm{A}\) is equal to \(2x_\mathrm{A}\) (we will see how to get this result shortly), so on the graph above, since the point \(\mathrm{A}\) is located at \(x_\mathrm{A}=-1\), the tangent line to the curve at that point has a slope of \(-2\).</p>
+</li>
+</ul>
+
+<h3 id='differentiability'>Differentiability</h3>
+
+<ul>
+<li>Note that some functions are not quite as well-behaved as \(x^2\): for example, consider the function \(f(x)=|x|\), the absolute value of \(x\):</li>
+</ul>
+
+<p><img src='/primers/assets/math/nondiff.png' alt='' /></p>
+
+<ul>
+<li>No matter how much you zoom in on the origin (the point at \(x=0, y=0\)), the curve will always look like a V. The slope is -1 for any \(x &lt; 0\), and it is +1 for any \(x &gt; 0\), but <strong>at \(x = 0\), the slope is undefined</strong>, since it is not possible to approximate the curve \(y=|x|\) locally around the origin using a straight line, no matter how much you zoom in on that point.</li>
+<li>The function \(f(x)=|x|\) is said to be <strong>non-differentiable</strong> at \(x=0\): its derivative is undefined at \(x=0\). This means that the curve \(y=|x|\) has an undefined slope at that point. However, the function \(f(x)=|x|\) is <strong>differentiable</strong> at all other points.</li>
+<li>
+  <p>In order for a function \(f(x)\) to be differentiable at some point \(x_\mathrm{A}\), the slope of the \((\mathrm{AB})\) line must approach a single finite value as \(\mathrm{B}\) gets infinitely close to \(\mathrm{A}\).</p>
+</li>
+<li>This implies several constraints:
+  <ul>
+    <li>First, the function must of course be <strong>defined</strong> at \(x_\mathrm{A}\). As a counterexample, the function \(f(x)=\dfrac{1}{x}\) is undefined at \(x_\mathrm{A}=0\), so it is not differentiable at that point.</li>
+    <li>The function must also be <strong>continuous</strong> at \(x_\mathrm{A}\), meaning that as \(x_\mathrm{B}\) gets infinitely close to \(x_\mathrm{A}\), \(f(x_\mathrm{B})\) must also get infinitely close to \(f(x_\mathrm{A})\).
+      <ul>
+        <li>
+          <p>As a counterexample,</p>
+
+\[f(x)=\begin{cases}-1 \text{ if }x &lt; 0\\+1 \text{ if }x \geq 0\end{cases}\]
+
+          <ul>
+            <li>is not continuous at \(x_\mathrm{A}=0\), even though it is defined at that point: indeed, when you approach it from the negative side, it does not approach infinitely close to \(f(0)=+1\). Therefore, it is not continuous at that point, and thus not differentiable either.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>The function must not have a <strong>breaking point</strong> at \(x_\mathrm{A}\), meaning that the slope that the \((\mathrm{AB})\) line approaches as \(\mathrm{B}\) approaches \(\mathrm{A}\) must be the same whether \(\mathrm{B}\) approaches from the left side or from the right side. We already saw a counterexample with \(f(x)=|x|\), which is both defined and continuous at \(x_\mathrm{A}=0\), but which has a breaking point at \(x_\mathrm{A}=0\): the slope of the curve \(y=|x|\) is -1 on the left, and +1 on the right.</li>
+    <li>The curve \(y=f(x)\) must not be <strong>vertical</strong> at point \(\mathrm{A}\). One counterexample is \(f(x)=\sqrt[3]{x}\), the cubic root of \(x\): the curve is vertical at the origin, so the function is not differentiable at \(x_\mathrm{A}=0\).</li>
+  </ul>
+</li>
+</ul>
+
+<h3 id='differentiating-a-function'>Differentiating a function</h3>
+
+<ul>
+<li>Now let’s see how to actually differentiate a function (i.e., find its derivative).</li>
+<li>The <strong>derivative</strong> of a function \(f(x)\) at \(x = x_\mathrm{A}\) is noted \(f’(x_\mathrm{A})\), and it is defined as:</li>
+</ul>
+
+\[f'(x_\mathrm{A}) = \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim\dfrac{f(x_\mathrm{B}) - f(x_\mathrm{A})}{x_\mathrm{B} - x_\mathrm{A}}\]
+
+<ul>
+<li>Don’t be scared, this is simpler than it looks! You may recognize the <em>rise over run</em> equation \(\dfrac{y_\mathrm{B} - y_\mathrm{A}}{x_\mathrm{B} - x_\mathrm{A}}\) that we discussed earlier. That’s just the slope of the \(\mathrm{(AB)}\) line. And the notation \(\underset{x_\mathrm{B} \to x_\mathrm{A}}\lim\) means that we are making \(x_\mathrm{B}\) approach infinitely close to \(x_\mathrm{A}\). So in plain English, \(f’(x_\mathrm{A})\) is the value that the slope of the \(\mathrm{(AB)}\) line approaches when \(\mathrm{B}\) gets infinitely close to \(\mathrm{A}\). This is just a formal way of saying exactly the same thing as earlier.</li>
+</ul>
+
+<h4 id='example-finding-the-derivative-of-x2'>Example: finding the derivative of \(x^2\)</h4>
+
+<ul>
+<li>Let’s look at a concrete example. Let’s see if we can determine what the slope of the \(y=x^2\) curve is, at any point \(\mathrm{A}\):</li>
+</ul>
+
+\[\begin{split}
+f'(x_{\mathrm{A}}) \, &amp;&amp; = \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim\dfrac{f(x_\mathrm{B}) - f(x_\mathrm{A})}{x_\mathrm{B} - x_\mathrm{A}} \\
+&amp;&amp; = \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim\dfrac{x_\mathrm{B}^2 - x_\mathrm{A}^2}{x_\mathrm{B} - x_\mathrm{A}} \quad &amp;&amp; \text{since } f(x) = x^2 \\
+&amp;&amp; = \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim\dfrac{(x_\mathrm{B} - x_\mathrm{A})(x_\mathrm{B} + x_\mathrm{A})}{x_\mathrm{B} - x_\mathrm{A}}\quad &amp;&amp; \text{since } {x_\mathrm{A}}^2 - {x_\mathrm{B}}^2 = (x_\mathrm{A}-x_\mathrm{B})(x_\mathrm{A}+x_\mathrm{B})\\
+&amp;&amp; = \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim(x_\mathrm{B} + x_\mathrm{A})\quad &amp;&amp; \text{since the two } (x_\mathrm{B} - x_\mathrm{A}) \text{ cancel out}\\
+&amp;&amp; = \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim x_\mathrm{B} \, + \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim x_\mathrm{A}\quad &amp;&amp; \text{since the limit of a sum is the sum of the limits}\\
+&amp;&amp; = x_\mathrm{A} \, + \underset{x_\mathrm{B} \to x_\mathrm{A}}\lim x_\mathrm{A} \quad &amp;&amp; \text{since } x_\mathrm{B}\text{ approaches } x_\mathrm{A} \\
+&amp;&amp; = x_\mathrm{A} + x_\mathrm{A} \quad &amp;&amp; \text{since } x_\mathrm{A} \text{ remains constant when } x_\mathrm{B}\text{ approaches } x_\mathrm{A} \\
+&amp;&amp; = 2 x_\mathrm{A}
+\end{split}\]
+
+<ul>
+<li>
+  <p>That’s it! We just proved that the slope of \(y = x^2\) at any point \(\mathrm{A}\) is \(f’(x_\mathrm{A}) = 2x_\mathrm{A}\). What we have done is called <strong>differentiation</strong>: finding the derivative of a function.</p>
+</li>
+<li>
+  <p>Note that we used a couple of important properties of limits. Here are the main properties you need to know to work with derivatives:</p>
+
+  <ul>
+    <li>\(\underset{x \to k}\lim c = c \quad\) if \(c\) is some constant value that does not depend on \(x\), then the limit is just \(c\).</li>
+    <li>\(\underset{x \to k}\lim x = k \quad\) if \(x\) approaches some value \(k\), then the limit is \(k\).</li>
+    <li>\(\underset{x \to k}\lim\,\left[f(x) + g(x)\right] = \underset{x \to k}\lim f(x) + \underset{x \to k}\lim g(x) \quad\) the limit of a sum is the sum of the limits</li>
+    <li>\(\underset{x \to k}\lim\,\left[f(x) \times g(x)\right] = \underset{x \to k}\lim f(x) \times \underset{x \to k}\lim g(x) \quad\) the limit of a product is the product of the limits</li>
+  </ul>
+</li>
+<li><strong>Important note:</strong> in Deep Learning, differentiation is almost always performed automatically by the framework you are using (such as TensorFlow or PyTorch). This is called <a href='https://en.wikipedia.org/wiki/Automatic_differentiation'>auto-differentiation</a>. However, you should still make sure you have a good understanding of derivatives, or else they will come and bite you one day, for example when you use a square root in your cost function without realizing that its derivative approaches infinity when \(x\) approaches 0 (tip: you should use \(\sqrt{x+\epsilon}\) instead, where \(\epsilon\) is some small constant, such as \(10^{-4}\)).</li>
+<li>You will often find a slightly different (but equivalent) definition of the derivative. Let’s derive it from the previous definition. First, let’s define \(\epsilon = x_\mathrm{B} - x_\mathrm{A}\). Next, note that \(\epsilon\) will approach 0 as \(x_\mathrm{B}\) approaches \(x_\mathrm{A}\). Lastly, note that \(x_\mathrm{B} = x_\mathrm{A} + \epsilon\). With that, we can reformulate the definition above like so:</li>
+</ul>
+
+\[f'(x_\mathrm{A}) = \underset{\epsilon \to 0}\lim\dfrac{f(x_\mathrm{A} + \epsilon) - f(x_\mathrm{A})}{\epsilon}\]
+
+<ul>
+<li>While we’re at it, let’s just rename \(x_\mathrm{A}\) to \(x\), to get rid of the annoying subscript A and make the equation simpler to read:</li>
+</ul>
+
+<hr />
+
+\[f'(x) = \underset{\epsilon \to 0}\lim\dfrac{f(x + \epsilon) - f(x)}{\epsilon}\]
+
+<hr />
+
+<ul>
+<li>Okay! Now let’s use this new definition to find the derivative of \(f(x) = x^2\) at any point \(x\), and (hopefully) we should find the same result as above (except using \(x\) instead of \(x_\mathrm{A}\)):</li>
+</ul>
+
+\[\begin{split}
+f'(x) \, &amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{f(x + \epsilon) - f(x)}{\epsilon} \\
+&amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{(x + \epsilon)^2 - {x}^2}{\epsilon} \quad &amp;&amp; \text{since } f(x) = x^2\\
+&amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{x^2 + 2x\epsilon + \epsilon^2 - {x}^2}{\epsilon}\quad &amp;&amp; \text{since } (x + \epsilon)^2 = {x}^2 + 2x\epsilon + \epsilon^2\\
+&amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{2x\epsilon + \epsilon^2}{\epsilon}\quad &amp;&amp; \text{since the two } {x}^2 \text{ cancel out}\\
+&amp;&amp; = \underset{\epsilon \to 0}\lim \, (2x + \epsilon)\quad &amp;&amp; \text{since } 2x\epsilon \text{ and } \epsilon^2 \text{ can both be divided by } \epsilon\\
+&amp;&amp; = 2 x
+\end{split}\]
+
+<ul>
+<li>As we see, this result matches the result we obtained earlier.</li>
+</ul>
+
+<h4 id='notations'>Notations</h4>
+
+<ul>
+<li>A word about notations: there are several other notations for the derivative that you will find in the litterature:</li>
+</ul>
+
+\[f'(x) = \dfrac{\mathrm{d}f(x)}{\mathrm{d}x} = \dfrac{\mathrm{d}}{\mathrm{d}x}f(x)\]
+
+<ul>
+<li>This notation is also handy when a function is not named. For example \(\dfrac{\mathrm{d}}{\mathrm{d}x}[x^2]\) refers to the derivative of the function \(x \mapsto x^2\).</li>
+<li>Moreover, when people talk about the function \(f(x)\), they sometimes leave out “\((x)\)”, and they just talk about the function \(f\). When this is the case, the notation of the derivative is also simpler:</li>
+</ul>
+
+\[f' = \dfrac{\mathrm{d}f}{\mathrm{d}x} = \dfrac{\mathrm{d}}{\mathrm{d}x}f\]
+
+<ul>
+<li>The \(f’\) notation is Lagrange’s notation, while \(\dfrac{\mathrm{d}f}{\mathrm{d}x}\) is Leibniz’s notation.</li>
+<li>There are also other less common notations, such as Newton’s notation \(\dot y\) (assuming \(y = f(x)\)) or Euler’s notation \(\mathrm{D}f\).</li>
+</ul>
+
+<h3 id='differentiation-rules'>Differentiation rules</h3>
+
+<ul>
+<li>
+  <p>One very important rule is that <strong>the derivative of a sum is the sum of the derivatives</strong>. More precisely, if we define \(f(x) = g(x) + h(x)\), then \(f’(x) = g’(x) + h’(x)\). This is quite easy to prove:</p>
+
+\[\begin{split}
+f'(x) &amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{f(x+\epsilon) - f(x)}{\epsilon} &amp;&amp; \quad\text{by definition}\\
+&amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{g(x+\epsilon) + h(x+\epsilon) - g(x) - h(x)}{\epsilon} &amp;&amp; \quad \text{using }f(x) = g(x) + h(x) \\
+&amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{g(x+\epsilon) - g(x) + h(x+\epsilon) - h(x)}{\epsilon} &amp;&amp; \quad \text{just moving terms around}\\
+&amp;&amp; = \underset{\epsilon \to 0}\lim\dfrac{g(x+\epsilon) - g(x)}{\epsilon} + \underset{\epsilon \to 0}\lim\dfrac{h(x+\epsilon) - h(x)}{\epsilon} &amp;&amp; \quad \text{since the limit of a sum is the sum of the limits}\\
+&amp;&amp; = g'(x) + h'(x) &amp;&amp; \quad \text{using the definitions of }g'(x) \text{ and } h'(x)
+\end{split}\]
+</li>
+<li>
+  <p>Similarly, it is possible to show the following important rules (I’ve included the proofs at the end of this notebook, in case you’re curious):</p>
+</li>
+</ul>
+
+<div align='center'>
+<table class='tg'>
+<thead>
+  <tr>
+    <th class='tg-hcenter-valign-first'> </th>
+    <th class='tg-hcenter-valign-first'>Function \(f\)</th>
+    <th class='tg-hcenter-valign-second'>Derivative \(f’\)</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Constant</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = c\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = 0\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Sum</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = g(x) + h(x)\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = g’(x) + h’(x)\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Product</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = g(x) h(x)\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = g(x)h’(x) + g’(x)h(x)\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Quotient</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = \dfrac{g(x)}{h(x)}\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = \dfrac{g’(x)h(x) - g(x)h’(x)}{h^2(x)}\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Power</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = x^r\) with \(r \neq 0\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = rx^{r-1}\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Exponential</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = \exp(x)\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x)=\exp(x)\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Logarithm</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = \ln(x)\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = \dfrac{1}{x}\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Sin</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = \sin(x)\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = \cos(x)\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Cos</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = \cos(x)\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = -\sin(x)\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Tan</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = \tan(x)\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = \dfrac{1}{\cos^2(x)}\)</td>
+  </tr>
+  <tr>
+    <td class='tg-tcenter-valign-first'><strong>Chain Rule</strong></td>
+    <td class='tg-tcenter-valign-first'>\(f(x) = g(h(x))\)</td>
+    <td class='tg-tcenter-valign-second'>\(f’(x) = g’(h(x))\,h’(x)\)</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<hr />
+
+<ul>
+<li>Let’s try differentiating a simple function using the above rules: we will find the derivative of \(f(x)=x^3+\cos(x)\). Using the rule for the derivative of sums, we find that \(f’(x)=\dfrac{\mathrm{d}}{\mathrm{d}x}[x^3] + \dfrac{\mathrm{d}}{\mathrm{d}x}[\cos(x)]\). Using the rule for the derivative of powers and for the \(\cos\) function, we find that \(f’(x) = 3x^2 - \sin(x)\).</li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Let’s try a harder example: let’s find the derivative of \(f(x) = \sin(2 x^2) + 1\). First, let’s define \(u(x)=\sin(x) + 1\) and \(v(x) = 2x^2\). Using the rule for sums, we find that \(u’(x)=\dfrac{\mathrm{d}}{\mathrm{d}x}[sin(x)] + \dfrac{\mathrm{d}}{\mathrm{d}x}[1]\). Since the derivative of the \(\sin\) function is \(\cos\), and the derivative of constants is 0, we find that \(u’(x)=\cos(x)\). Next, using the product rule, we find that \(v’(x)=2\dfrac{\mathrm{d}}{\mathrm{d}x}[x^2] + \dfrac{\mathrm{d}}{\mathrm{d}x}[2]\,x^2\). Since the derivative of a constant is 0, the second term cancels out. And since the power rule tells us that the derivative of \(x^2\) is \(2x\), we find that \(v’(x)=4x\). Lastly, using the chain rule, since \(f(x)=u(v(x))\), we find that \(f’(x)=u’(v(x))\,v’(x)=\cos(2x^2)\,4x\).</li>
+</ul>
+
+<h4 id='the-chain-rule'>The chain rule</h4>
+
+<ul>
+<li>Refer our treatment of the chain rule <a href='../ai/chain-rule'>here</a>.</li>
+</ul>
+
+<h3 id='derivatives-and-optimization'>Derivatives and optimization</h3>
+
+<ul>
+<li>
+  <p>When trying to optimize a function \(f(x)\), we look for the values of \(x\) that minimize (or maximize) the function.</p>
+</li>
+<li>
+  <p>It is important to note that when a function reaches a minimum or maximum, assuming it is differentiable at that point, the derivative will necessarily be equal to 0. For example, you can check the above animation, and notice that whenever the function \(f\) (in the upper graph) reaches a maximum or minimum, then the derivative \(f’\) (in the lower graph) is equal to 0.</p>
+</li>
+<li>
+  <p>So one way to optimize a function is to differentiate it and analytically find all the values for which the derivative is 0, then determine which of these values optimize the function (if any). For example, consider the function \(f(x)=\dfrac{1}{4}x^4 - x^2 + \dfrac{1}{2}\). Using the derivative rules (specifically, the sum rule, the product rule, the power rule and the constant rule), we find that \(f’(x)=x^3 - 2x\). We look for the values of \(x\) for which \(f’(x)=0\), so \(x^3-2x=0\), and therefore \(x(x^2-2)=0\). So \(x=0\), or \(x=\sqrt2\) or \(x=-\sqrt2\). As you can see on the following graph of \(f(x)\), these 3 values correspond to local extrema. Two global minima \(f\left(\sqrt2\right)=f\left(-\sqrt2\right)=-\dfrac{1}{2}\) and one local maximum \(f(0)=\dfrac{1}{2}\).</p>
+</li>
+</ul>
+
+<p><img src='../assets/math/deriv1.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<ul>
+<li>If a function has a local extremum at a point \(x_\mathrm{A}\) and is differentiable at that point, then \(f’(x_\mathrm{A})=0\). However, the reverse is not always true. For example, consider \(f(x)=x^3\). Its derivative is \(f’(x)=x^2\), which is equal to 0 at \(x_\mathrm{A}=0\). Yet, this point is <em>not</em> an extremum, as you can see on the following diagram. It’s just a single point where the slope is 0.</li>
+</ul>
+
+<p><img src='../assets/math/deriv2.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<ul>
+<li>So in short, you can optimize a function by analytically working out the points at which the derivative is 0, and then investigating only these points. It’s a beautifully elegant solution, but it requires a lot of work, and it’s not always easy, or even possible. For neural networks, it’s practically impossible.</li>
+<li>Another option to optimize a function is to perform <strong>Gradient Descent</strong> (we will consider minimizing the function, but the process would be almost identical if we tried to maximize a function instead): start at a random point \(x_0\), then use the function’s derivative to determine the slope at that point, and move a little bit in the downwards direction, then repeat the process until you reach a local minimum, and cross your fingers in the hope that this happens to be the global minimum.</li>
+<li>At each iteration, the step size is proportional to the slope, so the process naturally slows down as it approaches a local minimum. Each step is also proportional to the learning rate: a parameter of the Gradient Descent algorithm itself (since it is not a parameter of the function we are optimizing, it is called a <strong>hyperparameter</strong>).</li>
+</ul>
+
+<h3 id='higher-order-derivatives'>Higher order derivatives</h3>
+
+<ul>
+<li>What happens if we try to differentiate the function \(f\prime(x)\)? Well, we get the so-called second order derivative, noted \(f\prime\prime(x)\), or \(\dfrac{\mathrm{d}^2f}{\mathrm{d}x^2}\). If we repeat the process by differentiating \(f\prime\prime(x)\), we get the third-order derivative \(f\prime\prime\prime(x)\), or \(\dfrac{\mathrm{d}^3f}{\mathrm{d}x^3}\). And we could go on to get higher order derivatives.</li>
+<li>What’s the intuition behind second order derivatives? Well, since the (first order) derivative represents the instantaneous rate of change of \(f\) at each point, the second order derivative represents the instantaneous rate of change of the rate of change itself, in other words, you can think of it as the <strong>acceleration</strong> of the curve: if \(f\prime\prime(x) &lt; 0\), then the curve is accelerating “downwards”, if \(f\prime\prime(x) &gt; 0\) then the curve is accelerating “upwards”, and if \(f\prime\prime(x) = 0\), then the curve is locally a straight line. Note that a curve could be going upwards (i.e., \(f\prime(x)&gt;0\)) but also be accelerating downwards (i.e., \(f\prime\prime(x) &lt; 0\)): for example, imagine the path of a stone thrown upwards, as it is being slowed down by gravity (which constantly accelerates the stone downwards).</li>
+<li>Deep Learning generally only uses first order derivatives, but you will sometimes run into some optimization algorithms or cost functions based on second order derivatives.</li>
+</ul>
+
+<h3 id='partial-derivatives'>Partial derivatives</h3>
+
+<ul>
+<li>Up to now, we have only considered functions with a single variable \(x\). What happens when there are multiple variables? For example, let’s start with a simple function with 2 variables: \(f(x,y)=\sin(xy)\). If we plot this function, using \(z=f(x,y)\), we get the following 3D graph. I also plotted some point \(\mathrm{A}\) on the surface, along with two lines I will describe shortly.</li>
+</ul>
+
+<p><img src='/primers/assets/math/partialderiv.png' alt='' /></p>
+
+<ul>
+<li>If you were to stand on this surface at point \(\mathrm{A}\) and walk along the \(x\) axis towards the right (increasing \(x\)), your path would go down quite steeply (along the dashed blue line). The slope along this axis would be negative. However, if you were to walk along the \(y\) axis, towards the back (increasing \(y\)), then your path would almost be flat (along the solid red line), at least locally: the slope along that axis, at point \(\mathrm{A}\), would be very slightly positive.</li>
+<li>As you can see, a single number is no longer sufficient to describe the slope of the function at a given point. We need one slope for the \(x\) axis, and one slope for the \(y\) axis. One slope for each variable. To find the slope along the \(x\) axis, called the <strong>partial derivative of \(f\) with regards to \(x\)</strong>, and noted \(\dfrac{\partial f}{\partial x}\) (with curly \(\partial\)), we can differentiate \(f(x,y)\) with regards to \(x\) while treating all other variables (in this case just \(y\)) as constants:</li>
+</ul>
+
+\[\dfrac{\partial f}{\partial x} = \underset{\epsilon \to 0}\lim\dfrac{f(x+\epsilon, y) - f(x,y)}{\epsilon}\]
+
+<ul>
+<li>If you use the derivative rules listed earlier (in this example you would just need the product rule and the chain rule), making sure to treat \(y\) as a constant, then you will find:</li>
+</ul>
+
+\[\dfrac{\partial f}{\partial x} = y\cos(xy)\]
+
+<ul>
+<li>Similarly, the partial derivative of \(f\) with regards to \(y\) is defined as:</li>
+</ul>
+
+\[\dfrac{\partial f}{\partial y} = \underset{\epsilon \to 0}\lim\dfrac{f(x, y+\epsilon) - f(x,y)}{\epsilon}\]
+
+<ul>
+<li>All variables except for \(y\) are treated like constants (just \(x\) in this example). Using the derivative rules, we get:</li>
+</ul>
+
+\[\dfrac{\partial f}{\partial y} = x\cos(xy)\]
+
+<ul>
+<li>We now have equations to compute the slope along the \(x\) axis and along the \(y\) axis. But what about the other directions? If you were standing on the surface at point \(\mathrm{A}\), you could decide to walk in any direction you choose, not just along the \(x\) or \(y\) axes. What would the slope be then? Shouldn’t we compute the slope along every possible direction?</li>
+<li>Well, it can be shown that if all the partial derivatives are defined and continuous in a neighborhood around point \(\mathrm{A}\), then the function \(f\) is <strong>totally differentiable</strong> at that point, meaning that it can be locally approximated by a plane \(P_\mathrm{A}\) (the tangent plane to the surface at point \(\mathrm{A}\)). In this case, having just the partial derivatives along each axis ($x\) and \(y\) in our case) is sufficient to perfectly characterize that plane. Its equation is:</li>
+</ul>
+
+\[z = f(x_\mathrm{A},y_\mathrm{A}) + (x - x_\mathrm{A})\dfrac{\partial f}{\partial x}(x_\mathrm{A},y_\mathrm{A}) + (y - y_\mathrm{A})\dfrac{\partial f}{\partial y}(x_\mathrm{A},y_\mathrm{A})\]
+
+<ul>
+<li>In Deep Learning, we will generally be dealing with well-behaved functions that are totally differentiable at any point where all the partial derivatives are defined, but you should know that some functions are not that nice. For example, consider the function:</li>
+</ul>
+
+\[h(x,y)=\begin{cases}0 \text { if } x=0 \text{ or } y=0\\1 \text { otherwise}\end{cases}\]
+
+<ul>
+<li>At the origin (i.e., at \((x,y)=(0,0)\)), the partial derivatives of the function \(h\) with respect to \(x\) and \(y\) are both perfectly defined: they are equal to 0. Yet the function can clearly not be approximated by a plane at that point. It is not totally differentiable at that point (but it is totally differentiable at any point off the axes).</li>
+</ul>
+
+<h3 id='gradients'>Gradients</h3>
+
+<ul>
+<li>So far we have considered only functions with a single variable \(x\), or with 2 variables, \(x\) and \(y\), but the previous paragraph also applies to functions with more variables. So let’s consider a function \(f\) with \(n\) variables: \(f(x_1, x_2, \dots, x_n)\). For convenience, we will define a vector \(X\) whose components are these variables:</li>
+</ul>
+
+\[X=\begin{pmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{pmatrix}\]
+
+<ul>
+<li>Now \(f(X)\) is easier to write than \(f(x_1, x_2, \dots, x_n)\).</li>
+<li>The gradient of the function \(f(X)\) at some point \(X_\mathrm{A}\) is the vector whose components are all the partial derivatives of the function at that point. It is noted \(\nabla f(X_\mathrm{A})\), or sometimes \(\nabla_{X_\mathrm{A}}f\):</li>
+</ul>
+
+\[\nabla f(X_\mathrm{A}) = \begin{pmatrix}
+\dfrac{\partial f}{\partial x_1}(X_\mathrm{A})\\
+\dfrac{\partial f}{\partial x_2}(X_\mathrm{A})\\
+\vdots\\\
+\dfrac{\partial f}{\partial x_n}(X_\mathrm{A})\\
+\end{pmatrix}\]
+
+<ul>
+<li>Assuming the function is totally differentiable at the point \(X_A\), then the surface it describes can be approximated by a plane at that point (as discussed in the previous section), and the gradient vector is the one that points towards the steepest slope on that plane.</li>
+</ul>
+
+<h4 id='gradient-descent-revisited'>Gradient Descent, revisited</h4>
+
+<ul>
+<li>In Deep Learning, the Gradient Descent algorithm we discussed earlier is based on gradients instead of derivatives (hence its name). It works in much the same way, but using vectors instead of scalars: simply start with a random vector \(X_{0}\), then compute the gradient of \(f\) at that point, and perform a small step in the opposite direction, then repeat until convergence. More precisely, at each step \(t\), compute \(X_t = X_{t-1} - \eta \nabla f(X_{t-1})\). The constant \(\eta\) is the learning rate, typically a small value such as \(10^{-3}\). In practice, we generally use more efficient variants of this algorithm, but the general idea remains the same.</li>
+<li>In Deep Learning, the letter \(X\) is generally used to represent the input data. When you <em>use</em> a neural network to make predictions, you feed the neural network the inputs \(X\), and you get back a prediction \(\hat{y} = f(X)\). The function \(f\) treats the model parameters as constants. We can use more explicit notation by writing \(\hat{y} = f_w(X)\), where \(w\) represents the model parameters and indicates that the function relies on them, but treats them as constants.</li>
+<li>However, when <em>training</em> a neural network, we do quite the opposite: all the training examples are grouped in a matrix \(X\), all the labels are grouped in a vector \(y\), and both \(X\) and \(y\) are treated as constants, while \(w\) is treated as variable: specifically, we try to minimize the cost function \(\mathcal L_{X, y}(w) = g(f_{X}(w), y)\), where \(g\) is a function that measures the “discrepancy” between the predictions \(f_{X}(w)\) and the labels \(y\), where \(f_{X}(w)\) represents the vector containing the predictions for each training example. Minimizing the loss function is usually performed using Gradient Descent (or a variant of GD): we start with random model parameters \(w_{0}\), then we compute \(\nabla \mathcal L(w_0)\) and we use this gradient vector to perform a Gradient Descent step, then we repeat the process until convergence. It is crucial to understand that the gradient of the loss function is with regards to the model parameters \(w\) (<strong>not</strong> the inputs \(X\)).</li>
+</ul>
+
+<h3 id='jacobians'>Jacobians</h3>
+
+<ul>
+<li>Until now we have only considered functions that output a scalar, but it is possible to output vectors instead. For example, a classification neural network typically outputs one probability for each class, so if there are \(m\) classes, the neural network will output an \(d\)-dimensional vector for each input.</li>
+<li>In Deep Learning we generally only need to differentiate the loss function, which almost always outputs a single scalar number. But suppose for a second that you want to differentiate a function \(f(X)\) which outputs \(d\)-dimensional vectors. The good news is that you can treat each <em>output</em> dimension independently of the others. This will give you a partial derivative for each input dimension and each output dimension. If you put them all in a single matrix, with one column per input dimension and one row per output dimension, you get the so-called <strong>Jacobian matrix</strong>.</li>
+</ul>
+
+\[J_f(X_A) = \begin{pmatrix}
+\dfrac{\partial f_1}{\partial x_1}(X_A)
+&amp;&amp; \dfrac{\partial f_1}{\partial x_2}(X_A)
+&amp;&amp; \dots
+&amp;&amp; \dfrac{\partial f_1}{\partial x_n}(X_A)\\
+\dfrac{\partial f_2}{\partial x_1}(X_A)
+&amp;&amp; \dfrac{\partial f_2}{\partial x_2}(X_A)
+&amp;&amp; \dots
+&amp;&amp; \dfrac{\partial f_2}{\partial x_n}(X_A)\\
+\vdots &amp;&amp; \vdots &amp;&amp; \ddots &amp;&amp; \vdots \\
+\dfrac{\partial f_m}{\partial x_1}(X_A)
+&amp;&amp; \dfrac{\partial f_m}{\partial x_2}(X_A)
+&amp;&amp; \dots
+&amp;&amp; \dfrac{\partial f_m}{\partial x_n}(X_A)
+\end{pmatrix}\]
+
+<ul>
+<li>The partial derivatives themselves are often called the <strong>Jacobians</strong>. It’s just the first order partial derivatives of the function \(f\).</li>
+</ul>
+
+<h3 id='hessians'>Hessians</h3>
+
+<ul>
+<li>Let’s come back to a function \(f(X)\) which takes an \(n\)-dimensional vector as input and outputs a scalar. If you determine the equation of the partial derivative of \(f\) with regards to \(x_i\) (the \(i^\text{th}\) component of \(X\)), you will get a new function of \(X\): \(\dfrac{\partial f}{\partial x_i}\). You can then compute the partial derivative of this function with regards to \(x_j\) (the \(j^\text{th}\) component of \(X\)). The result is a partial derivative of a partial derivative: in other words, it is a <strong>second order partial derivatives</strong>, also called a <strong>Hessian</strong>. It is noted \(X\): \(\dfrac{\partial^2 f}{\partial x_jx_i}\). If \(i\neq j\) then it is called a <strong>mixed second order partial derivative</strong>.
+Or else, if \(j=i\), it is noted \(\dfrac{\partial^2 f}{\partial {x_i}^2}\).</li>
+<li>
+  <p>Let’s look at an example: \(f(x, y)=\sin(xy)\). As we showed earlier, the first order partial derivatives of \(f\) are: \(\dfrac{\partial f}{\partial x}=y\cos(xy)\) and \(\dfrac{\partial f}{\partial y}=x\cos(xy)\). So we can now compute all the Hessians (using the derivative rules we discussed earlier):</p>
+
+  <ul>
+    <li>\(\dfrac{\partial^2 f}{\partial x^2} = \dfrac{\partial f}{\partial x}\left[y\cos(xy)\right] = -y^2\sin(xy)\)</li>
+    <li>\(\dfrac{\partial^2 f}{\partial y\,\partial x} = \dfrac{\partial f}{\partial y}\left[y\cos(xy)\right] = \cos(xy) - xy\sin(xy)\)</li>
+    <li>\(\dfrac{\partial^2 f}{\partial x\,\partial y} = \dfrac{\partial f}{\partial x}\left[x\cos(xy)\right] = \cos(xy) - xy\sin(xy)\)</li>
+    <li>\(\dfrac{\partial^2 f}{\partial y^2} = \dfrac{\partial f}{\partial y}\left[x\cos(xy)\right] = -x^2\sin(xy)\)</li>
+  </ul>
+</li>
+<li>Note that \(\dfrac{\partial^2 f}{\partial x\,\partial y} = \dfrac{\partial^2 f}{\partial y\,\partial x}\). This is the case whenever all the partial derivatives are defined and continuous in a neighborhood around the point at which we differentiate.</li>
+<li>The matrix containing all the Hessians is called the <strong>Hessian matrix</strong>:</li>
+</ul>
+
+\[H_f(X_A) = \begin{pmatrix}
+\dfrac{\partial^2 f}{\partial {x_1}^2}(X_A)
+&amp;&amp; \dfrac{\partial^2 f}{\partial x_1\, \partial x_2}(X_A)
+&amp;&amp; \dots
+&amp;&amp; \dfrac{\partial^2 f}{\partial x_1\, \partial x_n}(X_A)\\
+\dfrac{\partial^2 f}{\partial x_2\,\partial x_1}(X_A)
+&amp;&amp; \dfrac{\partial^2 f}{\partial {x_2}^2}(X_A)
+&amp;&amp; \dots
+&amp;&amp; \dfrac{\partial^2 f}{\partial x_2\, \partial x_n}(X_A)\\
+\vdots &amp;&amp; \vdots &amp;&amp; \ddots &amp;&amp; \vdots \\
+\dfrac{\partial^2 f}{\partial x_n\,\partial x_1}(X_A)
+&amp;&amp; \dfrac{\partial^2 f}{\partial x_n\,\partial x_2}(X_A)
+&amp;&amp; \dots
+&amp;&amp; \dfrac{\partial^2 f}{\partial {x_n}^2}(X_A)\\
+\end{pmatrix}\]
+
+<ul>
+<li>There are great optimization algorithms which take advantage of the Hessians, but in practice Deep Learning almost never uses them. Indeed, if a function has \(n\) variables, there are \(n^2\) Hessians: since neural networks typically have several millions of parameters, the number of Hessians would exceed thousands of billions. Even if we had the necessary amount of RAM, the computations would be prohibitively slow.</li>
+</ul>
+
+<h3 id='examples'>Examples</h3>
+
+<h4 id='derivative-1-composed-exponential-function'>Derivative 1: Composed Exponential Function</h4>
+
+\[f(x)=e^{x^{2}}, x \in \mathbb{R}\]
+
+<ul>
+<li>The exponential function is a very foundational, common, and useful example. It is a strictly positive function, i.e. \(e^{x}&gt;0\) in \(\mathbb{R}\), and an important property to remember is that \(e^{0}=1 .\) In addition, you should remember that the exponential is the inverse of the logarithmic function. It is also one of the easiest functions to derivate because its derivative is simply the exponential itself, i.e. \(\left(e^{x}\right)^{\prime}=e^{x}\). The derivative becomes tricker when the exponential is combined with another function. In such cases, we use the
+chain rule formula, which states that the derivative of \(f(g(x))\) is equal to \(f^{\prime}(g(x)) \cdot g^{\prime}(x)\), i.e.,</li>
+</ul>
+
+\[\frac{\partial f(g(x))}{\partial x}=\frac{\partial g}{\partial x} f^{\prime}(g(x))\]
+
+<ul>
+<li>Applying chain rule, we can compute the derivative of \(f(x)=e^{x^{2}}\). We first Multiplying these two intermediate results, we obtain,</li>
+</ul>
+
+\[\frac{\partial e^{x^{2}}}{\partial x}=\frac{\partial x^{2}}{\partial x} \times e^{x^{2}}=2 x \times e^{x^{2}}\]
+
+<h4 id='derivative-2-function-with-variable-base-and-variable-exponent'>Derivative 2. Function with Variable Base and Variable Exponent</h4>
+
+\[f(x)=x^{x}, x \in \mathbb{R}_{+}^{\ast}\]
+
+<ul>
+<li>
+  <p>This function is a classic in interviews, especially in the financial/quant industry, where math skills are tested in even greater depth than in tech companies for machine learning positions. It sometimes brings the interviewees out of their comfort zone, but really, the hardest part of this question is to be able to start correctly.</p>
+</li>
+<li>
+  <p>The most important thing to realize when approaching a function in such exponential form is, first, the inverse relationship between exponential and logarithm, and, second, the fact, that every exponential function can be rewritten as a natural exponential function in the form of,</p>
+</li>
+</ul>
+
+\[\forall a \in \mathbb{R}_{\ast}^{+}, \forall b \in \mathbb{R}, a^{b}=e^{b \ln (a)}\]
+
+<ul>
+<li>Before we get to our \(f(x)=x^{\ast}\) example, let us demonstrate this property with a simpler function \(f(x)=2^{x}.\) We first use the above equation to rewrite \(2^{\ast}\) as \(\operatorname{exp}(x \ln (2))\) and subsequently apply chain rule.</li>
+</ul>
+
+\[\begin{aligned}
+2^{x}=e^{x \ln (2)} \Longrightarrow \frac{\partial e^{x l n}(2)}{\partial x} &amp;=\frac{\partial x \ln (2)}{\partial x} \times e^{x \ln (2)} \\
+&amp;=\ln (2) e^{x \ln (2)} \\
+&amp;=\ln (2) 2^{x}
+\end{aligned}\]
+
+<ul>
+<li>Going back to the original function \(f(x)=x^{x}\), once you rewrite the function as \(f(x)=\exp (x \ln x)\), the derivative becomes relatively straightforward to compute, with the only potentially difficult part being the chain rule step.</li>
+</ul>
+
+\[\begin{aligned}
+x^{x}=e^{x l n(x)} \Longrightarrow \frac{\partial x^{x}}{\partial x} &amp;=\frac{\partial e^{x l n(x)}}{\partial x}=\frac{\partial x \ln (x)}{\partial x} \times e^{x \ln (x)} \\
+&amp;=\left(\ln (x)+\frac{x}{x}\right) x^{x}=x^{x}(1+\ln (x))
+\end{aligned}\]
+
+<ul>
+<li>
+  <p>Note that here we used the product rule \((u v)^{\prime}=u^{\prime} v+u v^{\prime}\) for the exponent \(\sin (x)\).</p>
+</li>
+<li>
+  <p>This function is generally asked without any information on the function’s domain. If your interviewer doesn’t specify the domain by default, he might be testing your mathematical acuity. Here is where the question gets deceiving. Without being specific about the domain, it seems that \(x^{x}\) is defined for both positive and negative values. However, for negative \(x\), e.g. \((-0.9)^{\wedge}(-0.9)\), the result is a complex number, concretely \(-1.05-0.34 i . \mathrm{A}\) potential way out would be to define the domain of the function as \(\mathbb{Z}^{-} \cup \mathbb{R}^{+} \backslash 0\) (see <a href='https://math.stackexchange.com/questions/1551470/domain-of-xx'>here</a> for further discussion), but this would still not be differentiable for negative values. Therefore, in order to properly define the derivative of \(x^{x}\), we need to restrict the domain to only strictly positive values. We exclude 0 because for a derivative to be defined in 0, we need the limit
+derivative from the left (limit in 0 for negative values) to be equal to the limit derivative from the right (limit in 0 for positive values) \(-\) a condition that is broken in this case. since the left limit \(\lim _{\Delta x \rightarrow 0^{-}} \frac{f(0+\Delta x)-f(0)}{\Delta x}\) is undefined, the function is not differentiable in 0, and thus the function’s
+domain is restricted to only positive values.</p>
+</li>
+<li>
+  <p>Before we move on to the next section, I leave you with a slightly more advanced version of this function to test your understanding: \(f(x)=x^{x^{2}}\). If you understood the logic and steps behind the first example, adding the extra exponent shouldn’t cause any difficulties and you should conclude the following result:</p>
+</li>
+</ul>
+
+\[\begin{aligned}
+x^{x^{2}}=e^{x^{2} \ln (x)} \Longrightarrow \frac{\partial e^{x^{2} \ln (x)}}{\partial x} &amp;=\frac{\partial x^{2} \ln (x)}{\partial x} \times e^{x^{2} \ln (x)} \\
+&amp;=\left(\frac{1}{x} x^{2}+2 x \ln (x)\right) e^{x^{2} \ln (x)} \\
+&amp;=x^{x^{2}+1}(1+2 \ln (x))
+\end{aligned}\]
+
+<h4 id='derivative-3-gradient-of-a-multi-dimensional-input-function'>Derivative 3: Gradient of a Multi-Dimensional Input Function</h4>
+
+\[f(x, y, z)=2^{x y}+z \cos (x),(x, y, z) \in \mathbb{R}^{3}\]
+
+<ul>
+<li>
+  <p>So far, the functions discussed in the first and second derivative sections are functions mapping from \(\mathbb{R}\) to \(\mathbb{R}\), L. the domain as well as the range of the function are real numbers. But machine learning is essentially vectorial and the functions are multi-dimensional. A good example of such multidimensionality is a neural network layer of input size \(m\) and output size \(k\), i.e., \(f(x)=g\left(W^{\top} x+b\right)\), which is an element-wise composition of \(a_{2}\) linear mapping \(W^{T} x\) (with weight matrix \(W\) and input vector \(x\)) and a non linear mapping \(g\) (activation function). In the general case, this can also be viewed as a mapping from \(R^{m}\) to \(\mathbb{R}^{k}\).</p>
+</li>
+<li>
+  <p>In the specific case of \(k=1\), the derivative is called gradient. Let us now compute the derivative of the following three-dimensional function mapping \(\mathbb{R}^{3}\) to \(\mathbb{R}\):</p>
+</li>
+</ul>
+
+\[f(x, y, z)=2^{x y}+z \cos (x)\]
+
+<ul>
+<li>
+  <p>You can think off as a function mapping a vector of size 3 to a vector of size 1</p>
+</li>
+<li>The derivative of a multi-dimensional input function is called a gradient function \(g\) that maps \(\mathbb{R}^{n}\) to \(\mathbb{R}\) is a set of \(n\) partial derivatives of \(g\) where each \(h\) partial derivative is a function of \(n\) variables. Thus, if 8 is a mapping from \(\mathbb{R}^{\mathrm{D}}\) to \(\mathbb{R}\), its gradient \(\nabla g\) is a mapping from \(\mathbb{R}^{n}\) to \(\mathbb{R}^{n}\).</li>
+<li>To find the gradient of our function \(f(x, y, z)=2 w+z \cos (x)\), we construct vector of partial derivatives \(\partial f / \partial x\), f// \(\partial y\) and \(\partial f / \partial z\), and obtain the following result:</li>
+</ul>
+
+\[\nabla f(x, y, z)=\left[\begin{array}{c}
+\frac{\partial f}{\partial x} \\
+\frac{\partial f}{\partial y} \\
+\frac{\partial f}{\partial z}
+\end{array}\right]=\left[\begin{array}{c}
+\ln (2) y 2^{x y}-z \sin (x) \\
+\ln (2) x 2^{x y} \\
+\cos (x)
+\end{array}\right]\]
+
+<ul>
+<li>Note that this is an example similar to the previous section and we use the equivalence \(2^{x y}=\exp (x y \ln (2))\).</li>
+<li>In conclusion, for a multi-dimensional function that maps \(\mathbb{R}^{3}\) to \(\mathbb{R}\), the derivative is a gradient \(\nabla f\), which maps \(\mathbb{R}^{3}\) to \(\mathbb{R}^{3}\).</li>
+<li>In a general form of mappings \(\mathbb{R}\) “to \(\mathbb{R}^{k}\) where \(k&gt;1\), the derivative of a multi-dimensional function that maps \(\mathbb{R}^{\text {m }}\) to \(\mathbb{R}^{\text {k }}\) is a Jacobian matrix (instead of a gradient vector). Let us investigate this in the next section.</li>
+</ul>
+
+<h4 id='derivative-4-jacobian-of-a-multi-dimensional-input-and-output-function'>Derivative 4. Jacobian of a Multi-Dimensional Input and Output Function</h4>
+
+\[f(x, y)=\left[\begin{array}{c}
+2 x^{2} \\
+x \sqrt{y}
+\end{array}\right], x \in \mathbb{R}, y \in \mathbb{R}^{+}\]
+
+<ul>
+<li>We know from the previous section that the derivative of a function mapping \(\mathbb{R}^{\text {m }}\) to \(\mathbb{R}\) is a gradient mapping \(\mathbb{R}\) “to \(\mathbb{R}\) “. But what about the case where also the output domain is multi-dimensional, i.e. a mapping from \(\mathbb{R}^{\text {m }}\) to \(\mathbb{R}^{k}\) for \(k&gt;1\)?</li>
+<li>In such case, the derivative is called Jacobian matrix. We can view the gradient simply as a special case of Jacobian with dimension \(m \times 1\) with \(m\) equal to the number of variables. The Jacobian \(J(g)\) of a function \(g\) mapping \(\mathbb{R}^{\text {m to }}\) R a dimension of \(k \times m\), l.e. is a matrix of shape \(k \times m\). In other words, each row \(i\) of \(J(g)\) represents the gradient \(\nabla g_{i}\) of each sub-function \(g_{i}\) of \(g\).</li>
+<li>Let us derive the above defined function \(f(x, y)=\left[2 x^{2}, x \mid y\right]\) mapping \(\mathbb{R}^{2}\) to \(\mathbb{R}^{2}\), thus both input and output domains are multidimensional. In this particular case, since the square root function is not defined for negative values, we need to restrict the domain of \(y\) to \(\mathbb{R}^{+}\). The first row of our output Jacobian will be the derivative of function 1, i.e. \(\nabla 2 x^{2}\), and the second row the derivative of function 2, i.e. \(\nabla x \sqrt{y}\).</li>
+</ul>
+
+\[\nabla f(x, y)=J_{f}(x, y)=\left[\begin{array}{cc}
+\frac{\partial f_{1}}{\partial x} &amp; \frac{\partial f_{1}}{\partial y} \\
+\frac{\partial f_{2}}{\partial x} &amp; \frac{\partial f_{2}}{\partial y}
+\end{array}\right]=\left[\begin{array}{cc}
+4 x &amp; 0 \\
+\sqrt{y} &amp; \frac{x}{2 \sqrt{y}}
+\end{array}\right]\]
+
+<ul>
+<li>In deep learning, an example where the Jacobian is of special interest is in the explainability field (see, for example, Sensitivity based Neural Networks Explanations) that aims to understand the behavior of neural networks and analyses sensitivity of the output layer of neural networks with regard to the inputs. The Jacobian helps to investigate the impact of variation in the input space on the output. This can analogously be applied to understand the concepts of intermediate layers in neural networks.</li>
+<li>In summary, remember that while gradient is a derivative of a scalar with regard to a vector, Jacobian is a derivative of a vector with regard to another vector.</li>
+</ul>
+
+<h4 id='derivative-5-hessian-of-a-multi-dimensional-input-function'>Derivative 5. Hessian of a Multi-Dimensional Input Function</h4>
+
+\[f(x, y)=x^{2} y^{3},(x, y) \in \mathbb{R}^{2}\]
+
+<ul>
+<li>So far, our discussion has only been focused on first-order derivatives, but in neural networks we often talk about higher-order derivatives of multidimensional functions. A specific case is the second derivative, also called the Hessian matrix, and denoted \(H(f)\) or \(\nabla^{2}\) (nabla squared). The Hessian of a function \(g\) mapping \(\mathbb{R}^{n}\) to \(\mathbb{R}\) is a mapping \(H(g)\) from \(\mathbb{R}^{n}\) to \(\mathbb{R}^{n * n}\).</li>
+<li>Let us analyze how we went from \(\mathbb{R}\) to \(\mathbb{R}^{n * n}\) on the output domain. The first derivative, i.e. gradient \(\nabla g\), is a mapping from \(\mathbb{R}^{n}\) to \(\mathbb{R}^{n}\) and its derivative is a Jacobian. Thus, the derivation of each sub-function \(\nabla g_{i}\) results in a mapping of \(\mathbb{R}^{n}\) to \(\mathbb{R}^{n}\), with \(n\) such functions. You can think of this as if deriving each element of the gradient vector expanded into a vector, becoming thus a vector of vectors, i.e. a matrix.</li>
+<li>To compute the Hessian, we need to calculate so-called cross-derivatives, that is, derivate first with respect to \(x\) and then with respect to \(y\), or vice-versa. One might ask if the order in which we take the cross derivatives matters; in other words, if the Hessian matrix is symmetric or not. In cases where the function \(f\) is \(\mathscr{C}^{2}\), i.e. twice continuously differentiable, Schwarz theorem states that the cross derivatives are equal and thus the Hessian matrix is symmetric. Some discontinuous, yet differentiable functions, do
+not satisfy the equality of cross-derivatives.</li>
+<li>Constructing the Hessian of a function is equal to finding second-order partial derivatives of a scalar-valued function. For the specific example \(f(x, y)=x^{2} y^{3}\), the computation yields the following result:</li>
+</ul>
+
+\[\nabla^{2} f(x, y)=H_{f}(x, y)=\left[\begin{array}{cc}
+\frac{\partial^{2} f}{\partial x^{2}} &amp; \frac{\partial^{2} f}{\partial x \partial y} \\
+\frac{\partial^{2} f}{\partial y \partial x} &amp; \frac{\partial^{2} f}{\partial y^{2}}
+\end{array}\right]=\left[\begin{array}{ll}
+2 y^{3} &amp; 6 x y^{2} \\
+6 x y^{2} &amp; 6 y x^{2}
+\end{array}\right]\]
+
+<ul>
+<li>You can see that the cross-derivatives \(6 x y^{2}\) are in fact equal. We first derived with regard to \(x\) and obtained \(2 x y^{3}\), then again with regard to \(y\), obtaining \(6 x y^{2} .\) The diagonal elements are simply \(f_{i}\) “ for each mono-dimensional subfunction of either \(x\) or \(y\).</li>
+<li>An extension would be to discuss the case of a second order derivatives for multi-dimensional functions mapping \(\mathbb{R}\) m to \(\mathbb{R}^{\text {k }}\), which can intuitively be
+seen as a second-order Jacobian. This is a mapping from \(\mathbb{R}^{\mathrm{m}}\) to \(\mathbb{R}^{\mathrm{k} * \mathrm{m}} * \mathrm{m}\), i.e. a 3D tensor. Similarly to the Hessian, in order to find the gradient of the Jacobian (differentiate a second time), we differentiate each element of the \(k \times m\) matrix and obtain a matrix of vectors, i.e. a tensor. While it is rather unlikely that you would be asked to do such computation manually, it is important to be aware of higher-order derivatives for multidimensional functions.</li>
+</ul>
+
+<h2 id='probability-theory'>Probability theory</h2>
+
+<h3 id='concepts'>Concepts</h3>
+
+<h4 id='chance-events'>Chance events</h4>
+
+<ul>
+<li>Randomness is all around us. Probability theory is the mathematical framework that allows us to analyze chance events in a logically sound manner. The probability of an event is a number indicating how likely that event will occur. This number is always between 0 and 1, where 0 indicates impossibility and 1 indicates certainty.</li>
+<li>A classic example of a probabilistic experiment is a fair coin toss, in which the two possible outcomes are heads or tails. In this case, the probability of flipping a head or a tail is \(\frac{1}{2}\). In an actual series of coin tosses, we may get more or less than exactly 50% heads. But as the number of flips increases, the long-run frequency of heads is bound to get closer and closer to 50%.</li>
+<li>For an unfair or weighted coin, the two outcomes are not equally likely, in which case, you’ll need to assign appropriate weights to each of the outcomes. If we assign numbers to the outcomes — say, 1 for heads, 0 for tails — then we have created the mathematical object known as a <a href='#random-variables'>random variable</a>.</li>
+</ul>
+
+<h4 id='expectation'>Expectation</h4>
+
+<ul>
+<li>The expectation of a random variable is a number that attempts to capture the center of that random variable’s distribution. It can be interpreted as the long-run average of many independent samples from the given distribution. More precisely, it is defined as the probability-weighted sum of all possible values in the random variable’s support,</li>
+</ul>
+
+\[\mathrm{E}[X]=\sum_{x \in \mathcal{X}} x P(x)\]
+
+<ul>
+<li>Consider the probabilistic experiment of rolling a fair die. After a sufficiently large number of iterations, the running sample mean converges to the expectation of 3.5. Changing the distribution of the different faces of the die (thus making the die biased or “unfair”) would affect the expected value.</li>
+</ul>
+
+<h4 id='variance'>Variance</h4>
+
+<ul>
+<li>Whereas expectation provides a measure of centrality, the variance of a random variable quantifies the spread of that random variable’s distribution. The variance is the average value of the squared difference between the random variable and its expectation,</li>
+</ul>
+
+\[\operatorname{Var}(X)=\mathrm{E}\left[(X-\mathrm{E}[X])^{2}\right]\]
+
+<ul>
+<li>When you draw cards randomly from a deck of ten cards, you’ll observe that the running average of squared differences begins to resemble the true variance.</li>
+</ul>
+
+<h4 id='set-theory'>Set Theory</h4>
+
+<ul>
+<li>A set, broadly defined, is a collection of objects. In the context of probability theory, we use set notation to specify compound events. For example, we can represent the event “roll an even number” by the set \(\{2, 4, 6\}\). For this reason it is important to be familiar with the algebra of sets.</li>
+<li>Sets are usually visualized as Venn diagrams.</li>
+</ul>
+
+<h4 id='counting'>Counting</h4>
+
+<ul>
+<li>It can be surprisingly difficult to count the number of sequences or sets satisfying certain conditions.</li>
+<li>For example, consider a bag of marbles in which each marble is a different color. If we draw marbles one at a time from the bag without replacement, and there exists four unique marbles in the bag, how many different <strong>ordered</strong> sequences (permutations) of the marbles are possible? How many different <strong>unordered</strong> sets (combinations)?</li>
+<li>Permutations with \(n = 4\) and \(^nP_{x} = 1\):</li>
+</ul>
+
+<p><img src='/primers/assets/math/comb.jpg' alt='' /></p>
+
+<ul>
+<li>Combinations with \(n = 4\) and \({n \choose x}\) or \(^nC_{x} = 1\):</li>
+</ul>
+
+<p><img src='/primers/assets/math/comb.jpg' alt='' /></p>
+
+<h4 id='conditional-probability'>Conditional Probability</h4>
+
+<ul>
+<li>Conditional probabilities allow us to account for information we have about our system of interest. For example, we might expect the probability that it will rain tomorrow (in general) to be smaller than the probability it will rain tomorrow given that it is cloudy today. This latter probability is a conditional probability, since it accounts for relevant information that we possess.</li>
+<li>Mathematically, computing a conditional probability amounts to shrinking our sample space to a particular event. So in our rain example, instead of looking at how often it rains on any day in general, we “pretend” that our sample space consists of only those days for which the previous day was cloudy. We then determine how many of those days were rainy.</li>
+</ul>
+
+<h3 id='probability-distributions'>Probability distributions</h3>
+
+<ul>
+<li>A probability distribution specifies the relative likelihoods of all possible outcomes. Before we dive into some common probability distributions, let’s go over the associated terminologies.</li>
+</ul>
+
+<h4 id='random-variables'>Random Variables</h4>
+
+<ul>
+<li>Formally, a random variable is a function that assigns a real number to each outcome in the probability space. By sampling from the probability space associated with your distribution, you can generate the empirical distribution of your random variable.</li>
+</ul>
+
+<h4 id='central-limit-theorem'>Central Limit Theorem</h4>
+
+<ul>
+<li>The Central Limit Theorem (CLT) states that the sample mean of a sufficiently large number of independent and identically distributed (i.i.d.) random variables is approximately normally distributed. The larger the sample space, the better the approximation.</li>
+</ul>
+
+<h4 id='types-of-probability-distributions'>Types of probability distributions</h4>
+
+<ul>
+<li>There are two major classes of probability distributions:
+  <ul>
+    <li>Discrete</li>
+    <li>Continuous</li>
+  </ul>
+</li>
+<li>Note that the discrete distributions are defined by the probability mass function (PMF) while the continuous ones are defined by the probability density function (PDF), as we’ll see in the below section.</li>
+</ul>
+
+<h5 id='discrete'>Discrete</h5>
+
+<ul>
+<li>A discrete random variable has a finite or countable number of possible values.</li>
+<li>
+  <p>If \(X\) is a discrete random variable, then there exists unique non-negative functions, \(f(x)\) and \(F(x)\), such that the following are true:</p>
+
+  <p>\(
+\begin{array}{l}
+P(X=x)=f(x) <br />
+P(X&lt;x)=F(x)
+\end{array}
+\)</p>
+
+  <ul>
+    <li>where, \(f(x)\) denotes the probability mass function and \(F(x)\) denotes the cumulative distribution function.</li>
+  </ul>
+</li>
+</ul>
+
+<h5 id='continuous'>Continuous</h5>
+
+<ul>
+<li>
+  <p>A continuous random variable takes on an uncountably infinite number of possible values (e.g. all real numbers).</p>
+</li>
+<li>
+  <p>If \(X\) is a continuous random variable, then there exists unique non-negative functions, \(f(x)\) and \(F(x)\), such that the following are true:</p>
+
+\[\begin{aligned}
+P(a \leq X \leq b) &amp;=\int_{a}^{b} f(x) d x \\
+P(X&lt;x) &amp;=F(x)
+\end{aligned}\]
+
+  <ul>
+    <li>where, \(f(x)\) denotes the probability density function and \(F(x)\) denotes the cumulative distribution function.</li>
+  </ul>
+</li>
+</ul>
+
+<h4 id='bernoulli-distribution'>Bernoulli distribution</h4>
+
+<ul>
+<li>The Bernoulli distribution arises as the result of a binary outcome, which is why it is used to model binary data.
+  <ul>
+    <li>For e.g., building a spam vs. ham binary classifier, or modeling a coin toss.</li>
+  </ul>
+</li>
+<li>A Bernoulli random variable thus models a discrete distribution.</li>
+<li>Bernoulli random variables take the values 0 and 1 with probabilities of \(p\) and \(1-p\), respectively.</li>
+<li>The mean of a Bernoulli random variable is \(p\) and the variance is \(p(1 - p)\).</li>
+<li>If we let \(X\) be a Bernoulli random variable, it is typical to call \(X=1\) as a “success” and \(X=0\) as a “failure”.</li>
+</ul>
+
+<h5 id='pmf'>PMF</h5>
+
+<ul>
+<li>The probability mass function \(f(\cdot)\) of a Bernoulli distribution, over possible outcomes \(k \in \{0,1\}\), is given by,</li>
+</ul>
+
+\[f(k ; p)=\left\{\begin{array}{ll}
+p &amp; \text { if } k=1 \\
+q=1-p &amp; \text { if } k=0
+\end{array}\right.\]
+
+<ul>
+<li>This can also be expressed as,</li>
+</ul>
+
+\[f(k ; p)=p^{k}(1-p)^{1-k} \quad \text { for } k \in\{0,1\}\]
+
+<ul>
+<li>or as,</li>
+</ul>
+
+\[f(k ; p)=p k+(1-p)(1-k) \quad \text { for } k \in\{0,1\}\]
+
+<ul>
+<li>Note that the Bernoulli distribution is a special case of the binomial distribution with \(n=1\).</li>
+</ul>
+
+<p><img src='/primers/assets/math/1.jpg' alt='' /></p>
+
+<h5 id='cdf'>CDF</h5>
+
+<ul>
+<li>The cumulative density function (CDF) of the Bernoulli distribution is given by,</li>
+</ul>
+
+\[F(k ; p)=\left\{\begin{array}{ll}0 &amp; \text { if } k&lt;0 \\ 
+1-p &amp; \text { if } 0 \leq k&lt;1 \\ 
+1 &amp; \text { if } k \geq 1
+\end{array}\right.\]
+
+<p><img src='/primers/assets/math/1a.jpg' alt='' /></p>
+
+<h5 id='iid-bernoulli-trials'>iid Bernoulli trials</h5>
+
+<ul>
+<li>If several iid Bernoulli observations \(x_1,\ldots, x_n\), are observed the likelihood is \(\prod_{i=1}^n p^{x_i} (1 - p)^{1 - x_i} = p^{\sum x_i} (1 - p)^{n - \sum x_i}\).</li>
+<li>Notice that the likelihood depends only on the sum of the \(x_i\).</li>
+<li>Because \(n\) is fixed and assumed known, this implies that the sample proportion \(\sum_i \frac{x_i}{n}\) contains all of the relevant information about \(p\).</li>
+<li>We can maximize the Bernoulli likelihood over \(p\) to obtain that \(\hat p = \sum_i \frac{x_i}{n}\) is the maximum likelihood estimator for \(p\).</li>
+</ul>
+
+<h5 id='binomial-trials'>Binomial trials</h5>
+
+<ul>
+<li>Binomial random variables are obtained as the sum of iid Bernoulli trials.</li>
+<li>Specifically, let \(X_1,\ldots,X_n\) be iid \(\operatorname{Bernoulli}(p)\); then \(X = \sum_{i=1}^n X_i\) is a binomial random variable.</li>
+<li>The binomial mass function is:</li>
+</ul>
+
+\[P(X = x) = \left( \begin{array}{c} n \\ 
+x \end{array} \right) p^x(1 - p)^{n-x} \text{ for }x=0,\ldots,n\]
+
+<h5 id='the-selection-problem'>The selection problem</h5>
+
+<ul>
+<li>The notation \(^nC_{x}\) or \({n \choose x} = \frac{n!}{x!(n-x)!}\) (read “\(n\) choose \(x\)”) counts the number of ways of selecting \(x\) items out of \(n\) without replacement disregarding the order of the items.</li>
+<li>Also,</li>
+</ul>
+
+\[\left( \begin{array}{c} n \\ 
+0 \end{array} \right) = \left( \begin{array}{c} n \\ 
+n \end{array} \right) = 1\]
+
+<h5 id='example-justification-of-the-binomial-likelihood'>Example justification of the binomial likelihood</h5>
+
+<ul>
+<li>Consider the probability of getting 6 heads out of 10 coin flips from a coin with success probability \(p\).</li>
+<li>The probability of getting 6 heads and 4 tails in any specific order is \(p^6(1-p)^4\).</li>
+<li>There are \({10 \choose 6}\) possible orders of 6 heads and 4 tails.</li>
+</ul>
+
+<h5 id='example'>Example</h5>
+
+<ul>
+<li>Suppose a friend has 8 children, 7 of which are girls and none are twins.</li>
+<li>If each gender has an independent 50% probability for each birth, what’s the probability of getting 7 or more girls out of 8 births?</li>
+</ul>
+
+\[\left( \begin{array}{c} 8 \\ 
+7 \end{array} \right) 0.5^{7}(1-0.5)^{1} + \left( \begin{array}{c} 8 \\ 
+8 \end{array} \right) 0.5^{8}(1-0.5)^{0} \approx 0.04\]
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>choose</span><span class='p'>(</span><span class='mi'>8</span><span class='p'>,</span> <span class='mi'>7</span><span class='p'>)</span> <span class='o'>*</span> <span class='mf'>0.5</span> <span class='o'>^</span> <span class='mi'>8</span> <span class='o'>+</span> <span class='n'>choose</span><span class='p'>(</span><span class='mi'>8</span><span class='p'>,</span> <span class='mi'>8</span><span class='p'>)</span> <span class='o'>*</span> <span class='mf'>0.5</span> <span class='o'>^</span> <span class='mi'>8</span> <span class='c1'># Returns 0.03516
+</span></code></pre></div></div>
+
+<h4 id='gaussiannormal-distribution'>Gaussian/normal distribution</h4>
+
+<ul>
+<li>The normal (or Gaussian) distribution has a bell-shaped density function and is used to model real-valued random variables that are assumed to be additively produced by many small effects.</li>
+<li>For example, the normal distribution is used to model people’s height, since height can be assumed to be the result of many small genetic and evironmental factors.
+  <ul>
+    <li>Another example would be modeling the price of a house, since the price of a house can be assumed to be a function of the area, school district, distance to landmarks etc.</li>
+  </ul>
+</li>
+<li>If \(X\) a random variable the follows a Gaussian distribution then, \(E[X] = \mu\) and \(Var(X) = \sigma^2\).</li>
+<li>The notation used to indicate that a random variable was sampled from a normal distribution is: \(X\sim \mathcal{N}(\mu, \sigma^2)\).</li>
+</ul>
+
+<h5 id='pdf'>PDF</h5>
+
+<ul>
+<li>A random variable is said to follow a normal or Gaussian distribution with mean \(\mu\) and variance \(\sigma^2\) if the associated PDF is,</li>
+</ul>
+
+\[f(x)=\frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}}\]
+
+<p><img src='../assets/math/2.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<h5 id='cdf-1'>CDF</h5>
+
+<ul>
+<li>
+  <p>The CDF of the Gaussian distribution is given by,</p>
+
+\[F(x)=\Phi\left(\frac{x-\mu}{\sigma}\right)=\frac{1}{2}\left[1+\operatorname{erf}\left(\frac{x-\mu}{\sigma \sqrt{2}}\right)\right]\]
+
+  <ul>
+    <li>where,
+      <ul>
+        <li>\(\Phi(\cdot)\) represents the CDF of the standard normal distribution.</li>
+        <li>\(\operatorname {erf} (x)\) represents the error function.</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+</ul>
+
+<p><img src='../assets/math/2a.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<h5 id='standard-normal-distribution'>Standard normal distribution</h5>
+
+<ul>
+<li>The simplest case of a the normal distribution is called the standard normal distribution. This is a special case when \(\mu = 0\) and \(\sigma = 1\), described by the PDF:</li>
+</ul>
+
+\[\varphi(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} x^{2}}\]
+
+<ul>
+<li>Note that the standard normal density function is denoted by \(\phi\).</li>
+<li>Standard normal random variables are often labeled \(Z\).</li>
+</ul>
+
+<h5 id='example-1'>Example 1</h5>
+
+<ul>
+<li>What is the \(95^{th}\) percentile of a \(\mathcal{N}(\mu, \sigma^2)\) distribution?</li>
+<li>We want the point \(x_0\) so that \(P(X \leq x_0) = 0.95\).</li>
+</ul>
+
+\[\begin{aligned} 
+P(X \leq x_0) &amp;= P\left(\frac{X - \mu}{\sigma} \leq \frac{x_0 - \mu}{\sigma}\right) \\
+&amp;= P\left(Z \leq \frac{x_0 - \mu}{\sigma}\right) \\
+&amp;= 0.95 
+\end{aligned}\]
+
+<ul>
+<li>\(\therefore\) \(\frac{x_0 - \mu}{\sigma} = 1.645\) or \(x_0 = \mu + \sigma 1.645\).</li>
+<li>In general, \(x_0 = \mu + \sigma z_0\) where \(z_0\) is the appropriate standard normal quantile.</li>
+</ul>
+
+<h5 id='example-2'>Example 2</h5>
+
+<ul>
+<li>What is the probability that a \(\mathcal{N}(\mu,\sigma^2)\) random variable is \(2 \sigma\) (i.e., 2 standard deviations) above the mean?</li>
+<li>Formally, we can write the question as:</li>
+</ul>
+
+\[P(X &gt; \mu + 2\sigma) = P\left(\frac{X -\mu}{\sigma} &gt; \frac{\mu + 2\sigma - \mu}{\sigma}\right)\]
+
+<ul>
+<li>This simplifies to,</li>
+</ul>
+
+\[P(X &gt; \mu + 2\sigma) = P(Z \geq 2 ) \approx 2.5%\]
+
+<h5 id='facts-about-the-normal-density'>Facts about the normal density</h5>
+
+<ul>
+<li>If \(X \sim \mathcal{N}(\mu,\sigma^2)\), then \(Z = \frac{X -\mu}{\sigma}\) is the standard normal distribution.</li>
+<li>If \(Z \sim \phi\), i.e., Z is a random variable that follows the standard normal distribution, then \(X = \mu + \sigma Z \sim \mathcal{N}(\mu, \sigma^2)\).</li>
+<li>The PDF of a general normal distribution in terms of the PDF of a standard normal \(\phi(\cdot)\) is,</li>
+</ul>
+
+\[\frac{1}{\sigma} \phi\left(\frac{x - \mu}{\sigma}\right)\]
+
+<ul>
+<li>Approximately \(68\%\), \(95\%\) and \(99.7\%\) of the normal density lies within 1, 2 and 3 standard deviations from the mean, respectively.
+\(-1.28\), \(-1.645\), \(-1.96\) and \(-2.33\) are the \(10^{th}\), \(5^{th}\), \(2.5^{th}\) and \(1^{st}\) percentiles of the standard normal distribution respectively.</li>
+<li>By symmetry, \(1.28\), \(1.645\), \(1.96\) and \(2.33\) are the \(90^{th}\), \(95^{th}\), \(97.5^{th}\) and \(99^{th}\) percentiles of the standard normal distribution respectively.</li>
+</ul>
+
+<h5 id='other-properties'>Other properties</h5>
+
+<ul>
+<li>The normal distribution is symmetric and peaked around its mean (therefore the mean, median and mode are all equal).</li>
+<li>A constant times a normally distributed random variable is also normally distributed (what is the mean and variance?).</li>
+<li>Sums of normally distributed random variables are again normally distributed even if the variables are dependent (what is the mean and variance?).</li>
+<li>Sample means of normally distributed random variables are again normally distributed (with what mean and variance?).</li>
+<li>The square of a standard normal random variable follows what is called chi-squared distribution.</li>
+<li>The exponent of a normally distributed random variables follows what is called the log-normal distribution.</li>
+<li>As we will see later, many random variables, properly normalized, limit to a normal distribution.</li>
+</ul>
+
+<h4 id='poisson-distribution'>Poisson distribution</h4>
+
+<ul>
+<li>A Poisson random variable counts the number of events occurring in a fixed interval of time or space, given that these events occur with an average rate \(\lambda\).</li>
+<li>This distribution can be used to model events such as:
+  <ul>
+    <li>The number of meteor showers in a year.</li>
+    <li>The number of goals in a soccer match.</li>
+    <li>The number of patients arriving in an emergency room between 10 and 11 PM.</li>
+    <li>The number of laser photons hitting a detector in a particular time interval.</li>
+    <li>The number of customers arriving in a store (or say, the number of page-views on a website).</li>
+  </ul>
+</li>
+<li>A Poisson random variable thus models a discrete distribution.</li>
+<li>Both the mean and variance of this distribution is \(\lambda\).</li>
+<li>Note that \(\lambda\) ranges from 0 to \(\infty\).</li>
+</ul>
+
+<h5 id='pmf-1'>PMF</h5>
+
+<ul>
+<li>The PMF of the the Poisson distribution is given by,</li>
+</ul>
+
+\[P(X = x; \lambda) = \frac{\lambda^x e^{-\lambda}}{x!}\text{ for }x=0,1,\ldots\]
+
+<p><img src='../assets/math/3.svg' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<h5 id='cdf-2'>CDF</h5>
+
+<ul>
+<li>The CDF of the Poisson distribution is given by,</li>
+</ul>
+
+\[\frac{\Gamma(\lfloor k+1\rfloor, \lambda)}{\lfloor k\rfloor !}\text{, or }e^{-\lambda} \sum_{i=0}^{\lfloor k\rfloor} \frac{\lambda^{i}}{i!}\text{ or }Q(\lfloor k+1\rfloor, \lambda)\]
+
+\[(\text{for }k \geq 0,\text{ where }\Gamma(x, y)\text{ is the upper incomplete gamma function, }\lfloor k\rfloor\text{ is the floor function, and }\mathrm{Q}\text{ is the regularized
+qamma function})\]
+
+<p><img src='../assets/math/3a.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<h5 id='use-cases-for-the-poisson-distribution'>Use-cases for the Poisson distribution</h5>
+
+<ul>
+<li>Modeling count data, i.e., data of the form \(\frac{\text{number of events}}{\text{time}}\). Examples include radioactive decay, survival data, contingency tables etc.</li>
+<li>Approximating binomials when \(n\) is large and \(p\) is small.</li>
+</ul>
+
+<h5 id='poisson-derivation'>Poisson derivation</h5>
+
+<ul>
+<li>Let \(h\) be very small.</li>
+<li>Now, if we assume that…
+  <ul>
+    <li>Prob. of an event in an interval of length \(h\) is \(\lambda h\) while the prob. of more than one event is negligible.</li>
+    <li>Whether or not an event occurs in one small interval does not impact whether or not an event occurs in another small interval</li>
+  </ul>
+</li>
+<li>… then, the number of events per unit time is Poisson with mean \(\lambda\).</li>
+</ul>
+
+<h5 id='rates-and-poisson-random-variables'>Rates and Poisson random variables</h5>
+
+<ul>
+<li>Poisson random variables are used to model rates.</li>
+<li>\(X \sim \operatorname{Poisson}(\lambda t)\) where,
+  <ul>
+    <li>\(\lambda = E\left[\frac{X}{t}\right]\) is the expected count per unit of time.</li>
+    <li>\(t\) is the total monitoring time.</li>
+  </ul>
+</li>
+</ul>
+
+<h5 id='poisson-approximation-to-the-binomial'>Poisson approximation to the binomial</h5>
+
+<ul>
+<li>A binomial random variable is the sum of \(n\) independent Bernoulli random variables with parameter \(p\). It is frequently used to model the number of successes in a specified number of identical binary experiments, such as the number of heads in five coin tosses.</li>
+<li>When \(n\) is large and \(p\) is small (with \(np &lt; 10\)), the Poisson distribution is an accurate approximation to the binomial distribution.</li>
+<li>Formally, \(X \sim \mbox{Binomial}(n, p)\), \(\lambda = n p\).</li>
+</ul>
+
+<h5 id='example-1'>Example</h5>
+
+<ul>
+<li>The number of people that show up at a bus stop is Poisson with a mean of \(2.5\) per hour.</li>
+<li>If watching the bus stop for 4 hours, what is the probability that 3 or fewer people show up for the whole time?</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>ppois</span><span class='p'>(</span><span class='mi'>3</span><span class='p'>,</span> <span class='k'>lambda</span> <span class='o'>=</span> <span class='mf'>2.5</span> <span class='o'>*</span> <span class='mi'>4</span><span class='p'>)</span> <span class='c1'># Returns 0.01034
+</span></code></pre></div></div>
+
+<h5 id='example-poisson-approximation-to-the-binomial'>Example: Poisson approximation to the binomial</h5>
+
+<ul>
+<li>If we flip a coin with success probablity \(0.01\) five hundred times, what’s the probability of 2 or fewer successes?</li>
+</ul>
+
+<div class='language-python highlighter-rouge'><div class='highlight'><pre class='highlight'><code><span class='n'>pbinom</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>,</span> <span class='n'>size</span><span class='o'>=</span><span class='mi'>500</span><span class='p'>,</span> <span class='n'>prob</span><span class='o'>=</span><span class='mf'>0.01</span><span class='p'>)</span> <span class='c1'># Returns 0.1234
+</span><span class='n'>ppois</span><span class='p'>(</span><span class='mi'>2</span><span class='p'>,</span> <span class='k'>lambda</span><span class='o'>=</span><span class='mi'>500</span> <span class='o'>*</span> <span class='mf'>0.01</span><span class='p'>)</span> <span class='c1'># Returns 0.1247
+</span></code></pre></div></div>
+
+<h4 id='uniform-distribution'>Uniform distribution</h4>
+
+<ul>
+<li>The uniform distribution (or rectangular distribution) is a continuous distribution such that all intervals of equal length on the distribution’s support have equal probability. For example, this distribution might be used to model people’s full birth dates, where it is assumed that all times in the calendar year are equally likely.</li>
+<li>The distribution describes an experiment where there is an arbitrary outcome that lies between certain bounds.</li>
+<li>The bounds are defined by the parameters, \(a\) and \(b\), which are the minimum and maximum values. The interval can be either be closed (e.g., \([a, b]\)) or open (e.g., \((a, b)\)).</li>
+<li>Therefore, the distribution is often abbreviated \(U(a, b)\), where \(U\) stands for uniform distribution.</li>
+</ul>
+
+<h5 id='pdf-1'>PDF</h5>
+
+<ul>
+<li>The PDF of the continuous uniform distribution is given by,</li>
+</ul>
+
+\[f(x)=\left\{\begin{array}{ll}
+\frac{1}{b-a} &amp; \text { for } a \leq x \leq b \\
+0 &amp; \text { for } x&lt;a \text { or } x&gt;b
+\end{array}\right.\]
+
+<p><img src='../assets/math/4.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<h5 id='cdf-3'>CDF</h5>
+
+<ul>
+<li>The CDF of the continuous uniform distribution is given by,</li>
+</ul>
+
+\[F(x)=\left\{\begin{array}{ll}0 &amp; \text { for } x&lt;a \\ \frac{x-a}{b-a} &amp; \text { for } x \in[a, b] \\ 1 &amp; \text { for } x&gt;b\end{array}\right.\]
+
+<p><img src='../assets/math/4a.png' align='center' style='background-color: #fff; margin: 10px auto' /></p>
+
+<h4 id='geometric-distribution'>Geometric distribution</h4>
+
+<ul>
+<li>A geometric random variable counts the number of trials that are required to observe a single success, where each trial is independent and has success probability \(p\). A geometric random variable thus models a discrete distribution.</li>
+<li>For example, this distribution can be used to model the number of times a die must be rolled in order for a six to be observed.</li>
+</ul>
+
+<p><img src='/primers/assets/math/geom.jpg' alt='' /></p>
+
+<h4 id='students-t-distribution'>Student’s t-distribution</h4>
+
+<ul>
+<li>A Student’s t-distribution (or simply the t-distribution), is a continuous probability distribution that arises when estimating the mean of a normally distributed population in situations where the sample size is small and population standard deviation is unknown.</li>
+</ul>
+
+<p><img src='/primers/assets/math/tdist.jpg' alt='' /></p>
+
+<h4 id='chi-squared-distribution'>Chi-squared distribution</h4>
+
+<ul>
+<li>A chi-squared random variable with \(k\) degrees of freedom is the sum of \(k\) independent and identically distributed squared standard normal random variables. A chi-squared random variable thus models a continuous distribution.</li>
+<li>It is often used in hypothesis testing and in the construction of <a href='#confidence-intervals'>confidence intervals</a>.</li>
+</ul>
+
+<p><img src='/primers/assets/math/chisquared.jpg' alt='' /></p>
+
+<h4 id='exponential-distribution'>Exponential distribution</h4>
+
+<ul>
+<li>The exponential distribution is the continuous analogue of the geometric distribution. It is often used to model waiting times.</li>
+</ul>
+
+<p><img src='/primers/assets/math/exp.jpg' alt='' /></p>
+
+<h4 id='f-distribution'>F distribution</h4>
+
+<ul>
+<li>The F-distribution (also known as the Fisher–Snedecor distribution), is a continuous distribution that arises frequently as the null distribution of a test statistic, most notably in the analysis of variance.</li>
+</ul>
+
+<p><img src='/primers/assets/math/f.jpg' alt='' /></p>
+
+<h4 id='gamma-distribution'>Gamma distribution</h4>
+
+<ul>
+<li>The gamma distribution is a general family of continuous probability distributions. The exponential and chi-squared distributions are special cases of the gamma distribution.</li>
+</ul>
+
+<p><img src='/primers/assets/math/gamma.jpg' alt='' /></p>
+
+<h4 id='beta-distribution'>Beta distribution</h4>
+
+<ul>
+<li>The beta distribution is a general family of continuous probability distributions bound between 0 and 1. The beta distribution is frequently used as a conjugate prior distribution in Bayesian statistics.</li>
+</ul>
+
+<p><img src='/primers/assets/math/beta.jpg' alt='' /></p>
+
+<h3 id='frequentist-inference'>Frequentist inference</h3>
+
+<ul>
+<li>Frequentist inference is the process of determining properties of an underlying distribution via the observation of data.</li>
+</ul>
+
+<h4 id='point-estimation'>Point estimation</h4>
+
+<ul>
+<li>One of the main goals of statistics is to estimate unknown parameters. To approximate these parameters, we choose an estimator, which is simply any function of randomly sampled observations.
+To illustrate this idea, let’s consider the problem of estimating the value of \(\pi\). To do so, we can uniformly drop samples on a square containing an inscribed circle. Notice that the value of \(\pi\) can be expressed as a ratio of the areas,</li>
+</ul>
+
+\[\begin{array}{l}
+S_{\text {circle}}=\pi r^{2} \\
+S_{\text {square}}=4 r^{2}
+\end{array} \Longrightarrow \pi=4 \frac{S_{\text {circle}}}{S_{\text {square}}}\]
+
+<ul>
+<li>We can estimate this ratio with our samples. Let \(m\) be the number of samples within our circle and \(n\) the total number of samples dropped. We define our estimator \(\hat{\pi}\) as:</li>
+</ul>
+
+\[\hat{\pi}=4 \frac{m}{n}\]
+
+<ul>
+<li>It can be shown that this estimator has the desirable properties of being unbiased and consistent.</li>
+</ul>
+
+<h4 id='confidence-intervals'>Confidence intervals</h4>
+
+<ul>
+<li>In contrast to point estimators, confidence intervals estimate a parameter by specifying a range of possible values. Such an interval is associated with a confidence level, which is the probability that the procedure used to generate the interval will produce an interval containing the true parameter.</li>
+</ul>
+
+<h4 id='the-bootstrap'>The Bootstrap</h4>
+
+<ul>
+<li>Much of frequentist inference centers on the use of “good” estimators. The precise distributions of these estimators, however, can often be difficult to derive analytically. The computational technique known as the Bootstrap provides a convenient way to estimate properties of an estimator via resampling.</li>
+</ul>
+
+<h3 id='bayesian-inference'>Bayesian inference</h3>
+
+<ul>
+<li>Bayesian inference techniques specify how one should update one’s beliefs upon observing data.</li>
+</ul>
+
+<h4 id='bayes-theorem'>Bayes’ Theorem</h4>
+
+<ul>
+<li>Suppose that on your most recent visit to the doctor’s office, you decide to get tested for a rare disease. If you are unlucky enough to receive a positive result, the logical next question is, “Given the test result, what is the probability that I actually have this disease?” (Medical tests are, after all, not perfectly accurate.) Bayes’ Theorem tells us exactly how to compute this probability:</li>
+</ul>
+
+\[P(Disease\mid+)=\frac{P(+\mid \text { Disease }) P(\text { Disease })}{P(+)}\]
+
+<ul>
+<li>As the equation indicates, the posterior probability of having the disease given that the test was positive depends on the prior probability of the disease \(P(Disease)\). Think of this as the incidence of the disease in the general population. Set this probability by dragging the bars below.</li>
+<li>The posterior probability also depends on the test accuracy: How often does the test correctly report a negative result for a healthy patient, and how often does it report a positive result for someone with the disease?</li>
+</ul>
+
+<h4 id='likelihood-function'>Likelihood Function</h4>
+
+<ul>
+<li>In statistics, the likelihood function has a very precise definition:</li>
+</ul>
+
+\[L(θ \mid x)=P(x \mid θ)\]
+
+<ul>
+<li>The concept of likelihood plays a fundamental role in both Bayesian and frequentist statistics. To read more, refer the section on <a href='../../cs229/linear-regression/#likelihood-vs-probability'>likelihood vs. probability</a> in our CS229 notes.</li>
+</ul>
+
+<h4 id='prior-to-posterior'>Prior to Posterior</h4>
+
+<ul>
+<li>At the core of Bayesian statistics is the idea that prior beliefs should be updated as new data is acquired. Consider a possibly biased coin that comes up heads with probability \(p\). This purple slider determines the value of \(p\) (which would be unknown in practice).</li>
+<li>As we acquire data in the form of coin tosses, we update the posterior distribution on \(p\), which represents our best guess about the likely values for the bias of the coin. This updated distribution then serves as the prior for future coin tosses.</li>
+</ul>
+
+<h3 id='regression-analysis'>Regression Analysis</h3>
+
+<ul>
+<li>Linear regression is an approach for modeling the linear relationship between two variables.</li>
+</ul>
+
+<h4 id='ordinary-least-squares'>Ordinary Least Squares</h4>
+
+<ul>
+<li>The ordinary least squares (OLS) approach to regression allows us to estimate the parameters of a linear model.</li>
+<li>The goal of this method is to determine the linear model that minimizes the sum of the squared errors between the observations in a dataset and those predicted by the model.</li>
+</ul>
+
+<h4 id='correlation'>Correlation</h4>
+
+<ul>
+<li>Correlation is a measure of the linear relationship between two variables. It is defined for a sample as the following and takes value between +1 and -1 inclusive:</li>
+</ul>
+
+\[r=\frac{s_{x y}}{\sqrt{s_{x x}} \sqrt{s_{y y}}}\]
+
+<ul>
+<li>\(s_{x y}, s_{x x}, s_{y y}\) are defined as:</li>
+</ul>
+
+\[\begin{aligned}
+s_{x y} &amp;=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)\left(y_{i}-\bar{y}\right) \\
+s_{x x} &amp;=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2} \\
+s_{y y} &amp;=\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}
+\end{aligned}\]
+
+<ul>
+<li>It can also be understood as the cosine of the angle formed by the ordinary least square line determined in both variable dimensions.</li>
+</ul>
+
+<h4 id='analysis-of-variance'>Analysis of Variance</h4>
+
+<ul>
+<li>Analysis of Variance (ANOVA) is a statistical method for testing whether groups of data have the same mean. ANOVA generalizes the t-test to two or more groups by comparing the sum of square error within and between groups.</li>
+</ul>
+
+<h2 id='trigonometry'>Trigonometry</h2>
+
+<h3 id='ratios'>Ratios</h3>
+
+<div align='center'>
+<table class='tg'>
+<thead>
+<tr>
+  <th class='tg-hcenter-valign-first'>\(Angle^{\circ}\)</th>
+  <th class='tg-hcenter-valign-first'>\(0^{\circ}\)</th>
+  <th class='tg-hcenter-valign-first'>\(30^{\circ}\)</th>
+  <th class='tg-hcenter-valign-first'>\(45^{\circ}\)</th>
+  <th class='tg-hcenter-valign-first'>\(60^{\circ}\)</th>
+  <th class='tg-hcenter-valign-second'>\(90^{\circ}\)</th>
+</tr>
+<tr>
+  <th class='tg-hcenter-valign-first'>\(Angle^{c}\)</th>
+  <th class='tg-hcenter-valign-first'>\(0^{c}\)</th>
+  <th class='tg-hcenter-valign-first'>\({\pi/6}^{c}\)</th>
+  <th class='tg-hcenter-valign-first'>\({\pi/4}^{c}\)</th>
+  <th class='tg-hcenter-valign-first'>\({\pi/3}^{c}\)</th>
+  <th class='tg-hcenter-valign-second'>\({\pi/2}^{c}\)</th>
+</tr>  
+</thead>
+<tbody>
+<tr>
+  <td class='tg-tcenter-valign-first'><span style='font-style:italic'>\(\sin \theta\)</span></td>
+  <td class='tg-tcenter-valign-first'>0</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{1}{2}\)</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{1}{\sqrt{2}}\)</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{\sqrt{3}}{2}\)</td>
+  <td class='tg-tcenter-valign-second'>1</td>
+</tr>
+<tr>
+  <td class='tg-tcenter-valign-first'><span style='font-style:italic'>\(\cos \theta\)</span></td>
+  <td class='tg-tcenter-valign-first'>1</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{\sqrt{3}}{2}\)</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{1}{\sqrt{2}}\)</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{1}{2}\)</td>
+  <td class='tg-tcenter-valign-second'>0</td>
+</tr>
+<tr>
+  <td class='tg-tcenter-valign-first'><span style='font-style:italic'>\(\tan \theta\)</span></td>
+  <td class='tg-tcenter-valign-first'>0</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{1}{\sqrt{3}}\)</td>
+  <td class='tg-tcenter-valign-first'>1</td>
+  <td class='tg-tcenter-valign-first'>\(\sqrt{3}\)</td>
+  <td class='tg-tcenter-valign-second'>\(\text{N/A}\)</td>
+</tr>
+<tr>
+  <td class='tg-tcenter-valign-first'><span style='font-style:italic'>\(\operatorname{cosec} \theta\)</span></td>
+  <td class='tg-tcenter-valign-first'>\(\text{N/A}\)</td>
+  <td class='tg-tcenter-valign-first'>2</td>
+  <td class='tg-tcenter-valign-first'>\(\sqrt{2}\)</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{2}{\sqrt{3}}\)</td>
+  <td class='tg-tcenter-valign-second'>1</td>
+</tr>
+<tr>
+  <td class='tg-tcenter-valign-first'><span style='font-style:italic'>\(\sec \theta\)</span></td>
+  <td class='tg-tcenter-valign-first'>1</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{2}{\sqrt{3}}\)</td>
+  <td class='tg-tcenter-valign-first'>\(\sqrt{2}\)</td>
+  <td class='tg-tcenter-valign-first'>2</td>
+  <td class='tg-tcenter-valign-second'>\(\text{N/A}\)</td>
+</tr>
+<tr>
+  <td class='tg-tcenter-valign-first'><span style='font-style:italic'>\(\cot \theta\)</span></td>
+  <td class='tg-tcenter-valign-first'>\(\text{N/A}\)</td>
+  <td class='tg-tcenter-valign-first'>\(\sqrt{3}\)</td>
+  <td class='tg-tcenter-valign-first'>1</td>
+  <td class='tg-tcenter-valign-first'>\(\frac{1}{\sqrt{3}}\)</td>
+  <td class='tg-tcenter-valign-second'>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<ul>
+<li>\(\text{N/A}\) = not defined.</li>
+</ul>
+
+<h3 id='graphical-view-of-sin-and-cos'>Graphical view of sin and cos</h3>
+
+<ul>
+<li>Shown below is a graphical view of how \(\cos (\theta)\) and \(\sin (\theta)\) vary as the angle goes from \(0^{\circ}\) to \(360^{\circ}\) (or equivalently, \(0^{c}\) to \(2\pi^{c}\)).
+  <ul>
+    <li>Note that the below diagram shows a unit circle (with radius = 1).</li>
+  </ul>
+</li>
+</ul>
