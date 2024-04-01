@@ -326,6 +326,8 @@ def on_click_start_over_again():
     st.session_state.use_subject_matter_1_filter = True
     st.session_state.questions_available = False
     
+    supabase.table('questions_filters').delete()
+    
 def show_results():
     st.write(
         rf"""
@@ -350,7 +352,8 @@ def show_results():
         df_results
 
     st.button("Start over again", on_click=on_click_start_over_again)
-    
+
+supabase.table('questions_filters').delete() 
 
 match st.session_state.page_flow:
     case 0: # FLOW_CONFIGURATION
