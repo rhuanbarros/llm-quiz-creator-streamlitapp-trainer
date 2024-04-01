@@ -326,7 +326,8 @@ def on_click_start_over_again():
     st.session_state.use_subject_matter_1_filter = True
     st.session_state.questions_available = False
     
-    supabase.table('questions_filters').delete()
+    supabase.table('question_filters').delete().gt('id', 0).execute()
+    
     
 def show_results():
     st.write(
@@ -353,10 +354,10 @@ def show_results():
 
     st.button("Start over again", on_click=on_click_start_over_again)
 
-supabase.table('questions_filters').delete() 
 
 match st.session_state.page_flow:
     case 0: # FLOW_CONFIGURATION
+        supabase.table('question_filters').delete().gt('id', 0).execute()
         show_config_train()
     
     case 1: # FLOW_QUESTION
