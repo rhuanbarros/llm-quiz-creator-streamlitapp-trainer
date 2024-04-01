@@ -2,6 +2,8 @@
 
 ## TODO
     - [X] arrumar problema com o filtro de assunto
+    - criar filtro por level pq tem assuntos que só tem questoes de um level.
+        - na verdade fazer o sistema verificar se a quantidade de questoes em cada nivel, se nao tiver nenhuma nem começa, se tiver apresenta só as do tipo q tem
     - fazer um split q pegue os headers do html, mas que seja de um tamanho razoalvelmente bom
 
 
