@@ -164,7 +164,7 @@ def show_config_train():
     # topic_descriptions_list_selected = st.multiselect("Topic description", topic_descriptions_list, ["All"])
     
     _, col2, col3, _ = st.columns([5,7,7,5])
-    col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected])
+    col2.button("Start!", on_click=on_click_start, args=[subject_matter_1s_list_selected])
     # col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
     # col3.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
 
@@ -172,36 +172,64 @@ def show_config_train():
 def load_question():
     print("----------------- LOADING QUESTION FUNCTION ------------------")
     
-    level = "beginner"
-    random_number = random.randint(0, 99)
-    if random_number <= 65:
-        level = "beginner"
-    else:
-        level = random.choice(["intermediate", "hard"])
-        
-    match level:
-        case "beginner":
-            response = supabase.table("get_question_beginner").select("*").execute()
-        case "intermediate":
-            response = supabase.table("get_question_intermediate").select("*").execute()
-        case "hard":
-            response = supabase.table("get_question_hard").select("*").execute()
+    possibilities = []
     
-    if len(response.data) > 0:
-        st.session_state.question = response.data[0]
+    response = supabase.table("get_count_question_beginner").select("*").execute()
+    quantity_beginner = response.data[0]["count"]
+    if quantity_beginner > 0:
+        possibilities.append('beginner')
         
-        st.session_state.questions_available = True
+    response = supabase.table("get_count_question_intermediate").select("*").execute()
+    quantity_intermediate = response.data[0]["count"]
+    if quantity_intermediate > 0:
+        possibilities.append('intermediate')
     
-        print("----------------- QUESTION LOADED -----------------")
-        print(st.session_state.question)
-        print("----------------- QUESTION LOADED -----------------")
+    response = supabase.table("get_count_question_hard").select("*").execute()
+    quantity_hard = response.data[0]["count"]
+    if quantity_hard > 0:
+        possibilities.append('hard')
         
+    print("-------------possibilities")
+    print(possibilities)
+    print("-------------possibilities")
+    
+    if len(possibilities) > 0:            
+        level = random.choice(possibilities)
+        
+        # random_number = random.randint(0, 99)
+        # if random_number <= 65:
+        #     level = "beginner"
+        # else:
+        #     level = random.choice(["intermediate", "hard"])
+        
+            
+        match level:
+            case "beginner":
+                response = supabase.table("get_question_beginner").select("*").execute()
+            case "intermediate":
+                response = supabase.table("get_question_intermediate").select("*").execute()
+            case "hard":
+                response = supabase.table("get_question_hard").select("*").execute()
+        
+        if len(response.data) > 0:
+            st.session_state.question = response.data[0]
+            
+            st.session_state.questions_available = True
+        
+            print("----------------- QUESTION LOADED -----------------")
+            print(st.session_state.question)
+            print("----------------- QUESTION LOADED -----------------")
+            
+        else:
+            st.info("No more questions available")
+            st.session_state.no_more_questions_available = True
+            st.session_state.page_flow = FLOW_RESULTS
     else:
         st.info("No more questions available")
         st.session_state.no_more_questions_available = True
         st.session_state.page_flow = FLOW_RESULTS
 
-    
+        
         
     
 def on_click_verify_answer(answer):
