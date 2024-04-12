@@ -1,6 +1,10 @@
 # Machine Learning Interview Preparation Trainer
 
-poetry run streamlit run main.py 
+## Install
+    poetry install --no-root
+
+## Run
+    poetry run streamlit run ./src/streamlit_app/main.py
 
 ## TODO
     - [X] arrumar problema com o filtro de assunto
