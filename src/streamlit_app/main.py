@@ -62,7 +62,7 @@ supabase: Client = create_client(url, key)
 
 st.set_page_config(
     page_title="Machine Learning Interview Preparation Trainer",
-    page_icon="💪",
+    page_icon="💪💪💪",
 )
 
 st.write(
