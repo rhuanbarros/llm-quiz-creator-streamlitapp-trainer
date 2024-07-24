@@ -6,6 +6,11 @@
 ## Run
     poetry run streamlit run ./src/streamlit_app/main.py
 
+## Publish to cloud
+    - go to https://share.streamlit.io/
+    - click in reboot. it will fetch the latest version from github.
+    - if there is any change in apy key or dependencies, I thnk iot should be updated in settings.
+
 ## TODO
     - [X] arrumar problema com o filtro de assunto
     - criar filtro por level pq tem assuntos que só tem questoes de um level.
