@@ -19,17 +19,28 @@ import sys
 
 import os
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "quiz"
+os.environ["LANGCHAIN_PROJECT"] = os.environ["LANGCHAIN_PROJECT"]
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_API_KEY"] = "ls__b626f8e0970e43cca449e7a3510ac96b"  # Update to your API key
+os.environ["LANGCHAIN_API_KEY"] = os.environ["LANGCHAIN_API_KEY"]
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
-logging.info('Inicializando LLM e embedings')
-api_key_google = "AIzaSyC-V6lfROehy46ntB6zPZ7CJ8zNF3gDdO4"
-llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, google_api_key=api_key_google)
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=api_key_google)
+logging.info('Inicializando LLM')
+api_key_google = os.environ["google_gemini"]
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", convert_system_message_to_human=True, google_api_key=api_key_google)
+
+# from g4f import Provider, models
+# from langchain.llms.base import LLM
+# from langchain_g4f import G4FLLM
+
+# llm: LLM = G4FLLM(
+#     model=models.gpt_35_turbo,
+#     # model=models.gpt_4o,
+#     # provider=Provider.Aichat,
+# )
+
+# embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=api_key_google)
 
 from langchain.prompts import PromptTemplate
 
@@ -67,7 +78,7 @@ st.set_page_config(
 
 st.write(
     """
-    # Machine Learning Interview Preparation Trainer test redeploy
+    # Machine Learning Interview Preparation Trainer
     """
 )
 
@@ -304,6 +315,7 @@ def on_click_elaborate_more_the_explanation():
         "question": st.session_state.question["question"]
     }
     response = chain.invoke(parameters)
+    print( response )
     print( response.content )
     
     st.info(f'{response.content}', icon="ℹ️")
