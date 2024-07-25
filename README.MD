@@ -1,11 +1,11 @@
 # 📚 Machine Learning Interview Preparation Trainer
 
-## Problem Addressed
+## 🚀 Problem Addressed
 I needed to study some topics in machine learning, but I couldn't find any specific quiz about them. 
 
 Additionally, I wanted to keep track of the contents I studied and how many questions I got right and wrong. Therefore, I needed a custom UI interface and fine-grained questions.
 
-## Solution
+## 💡 Solution
 I could just ask ChatGPT to create the questions, but it got very repetitive. I realized that if I prompted it with a piece of text about the subject matter, it would create much better questions. So, I created a very customized prompt for this task.
 
 The UI has some custom details:
