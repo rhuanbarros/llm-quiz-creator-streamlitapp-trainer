@@ -1,15 +1,44 @@
-# Machine Learning Interview Preparation Trainer
+# 📚 Machine Learning Interview Preparation Trainer
 
-## Install
+## Problem Addressed
+I needed to study some topics in machine learning, but I couldn't find any specific quiz about them. 
+
+Additionally, I wanted to keep track of the contents I studied and how many questions I got right and wrong. Therefore, I needed a custom UI interface and fine-grained questions.
+
+## Solution
+I could just ask ChatGPT to create the questions, but it got very repetitive. I realized that if I prompted it with a piece of text about the subject matter, it would create much better questions. So, I created a very customized prompt for this task.
+
+The UI has some custom details:
+- When I don't know the answer, I can click a button, and it automatically queries the Gemini model to explain the topic for me. This way, I don't need to leave the app and can continue the study session seamlessly. I used Streamlit to create the UI.
+- I also wanted to keep track of my results over time, so I needed a backend. To solve this, I used the Supabase backend as a service platform. It offers a free online database that I could connect using Python.
+
+Finally, I hosted the Streamlit UI in the cloud, allowing me to use the app even on my mobile phone.
+
+## Key Points
+- 📈 **Enhanced Learning**: Customized prompt generation for better question creation.
+- 📚 **Integrated Knowledge**: Query Gemini model directly for explanations without leaving the app.
+- 🗂️ **Result Tracking**: Keep track of study progress and quiz results over time.
+- ☁️ **Cloud Accessibility**: Hosted in the cloud for access on mobile devices.
+
+## How to Run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ml-interview-prep-trainer.git
+   ```
+
+2. Install dependencies
+   ```bash
     poetry install --no-root
-
-## Run
+   ```
+3. Run
+   ```bash
     poetry run streamlit run ./src/streamlit_app/main.py
+   ```
 
 ## Publish to cloud
     - go to https://share.streamlit.io/
     - click in reboot. it will fetch the latest version from github.
-    - if there is any change in apy key or dependencies, I thnk iot should be updated in settings.
+    - if there is any change in apy key or dependencies, I think it should be updated in settings.
 
 ## TODO
     - [X] arrumar problema com o filtro de assunto
@@ -17,106 +46,3 @@
         - na verdade fazer o sistema verificar se a quantidade de questoes em cada nivel, se nao tiver nenhuma nem começa, se tiver apresenta só as do tipo q tem
     - fazer um split q pegue os headers do html, mas que seja de um tamanho razoalvelmente bom
 
-
-## Views
-
-CREATE VIEW get_topic_descriptions AS
-SELECT DISTINCT topic_description FROM questions;
---------
-
--- DROP VIEW get_question_beginner;
-
-CREATE VIEW get_question_beginner AS
-SELECT q.*,
-    a.id AS answer_id,
-    a.created_at AS answer_created_at,
-    a.correct_answer AS correct_answer
-FROM (
-    SELECT q.*
-    FROM questions q
-    LEFT JOIN question_filters qf ON q.subject_matter_1 = qf.subject_matter_1
-    WHERE 
-    (qf.subject_matter_1 IS NOT NULL AND qf.id IS NOT NULL) OR -- Filters present in question_filters
-    (NOT EXISTS (SELECT 1 FROM question_filters) ) 
-) AS q
-LEFT JOIN answers AS a ON q.id = a.question_id
-WHERE a.question_id IS NULL
-    AND q.show_again = TRUE
-    AND q.level = 'beginner'
-ORDER BY RANDOM()
-LIMIT 1;
-
-
-
-
-
-
-
-
-
--- DROP VIEW get_question_intermediate;
-
-CREATE VIEW get_question_intermediate AS
-SELECT q.*,
-    a.id AS answer_id,
-    a.created_at AS answer_created_at,
-    a.correct_answer AS correct_answer
-FROM (
-    SELECT q.*
-    FROM questions q
-    LEFT JOIN question_filters qf ON q.subject_matter_1 = qf.subject_matter_1
-    WHERE 
-    (qf.subject_matter_1 IS NOT NULL AND qf.id IS NOT NULL) OR -- Filters present in question_filters
-    (NOT EXISTS (SELECT 1 FROM question_filters) ) 
-) AS q
-LEFT JOIN answers AS a ON q.id = a.question_id
-WHERE a.question_id IS NULL
-    AND q.show_again = TRUE
-    AND q.level = 'intermediate'
-ORDER BY RANDOM()
-LIMIT 1;
-
-
--- DROP VIEW get_question_hard;
-
-CREATE VIEW get_question_hard AS
-SELECT q.*,
-    a.id AS answer_id,
-    a.created_at AS answer_created_at,
-    a.correct_answer AS correct_answer
-FROM (
-    SELECT q.*
-    FROM questions q
-    LEFT JOIN question_filters qf ON q.subject_matter_1 = qf.subject_matter_1
-    WHERE 
-    (qf.subject_matter_1 IS NOT NULL AND qf.id IS NOT NULL) OR -- Filters present in question_filters
-    (NOT EXISTS (SELECT 1 FROM question_filters) ) 
-) AS q
-LEFT JOIN answers AS a ON q.id = a.question_id
-WHERE a.question_id IS NULL
-    AND q.show_again = TRUE
-    AND q.level = 'hard'
-ORDER BY RANDOM()
-LIMIT 1;
-
-
-
-
------------------------------------
-
--- DROP VIEW get_count_question_beginner;-- DROP VIEW get_count_question_beginner;
-
-CREATE VIEW get_count_question_beginner AS
-select count(*) from get_question_beginner
-
-
-
--- DROP VIEW get_count_question_intermediate;
-
-CREATE VIEW get_count_question_intermediate AS
-select count(*) from get_question_intermediate
-
-
--- DROP VIEW get_count_question_hard;
-CREATE VIEW get_count_question_hard AS
-select count(*) from get_question_hard
