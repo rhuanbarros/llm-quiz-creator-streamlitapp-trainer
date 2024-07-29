@@ -10,6 +10,10 @@ import json
 import logging
 import sys
 
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
+
 # not working
 # logging.basicConfig(level=print,  # Define o nível de log
 #                     format='%(asctime)s - %(levelname)s - %(message)s',  # Define o formato da mensagem de log
@@ -27,8 +31,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 logging.info('Inicializando LLM')
-api_key_google = os.environ["google_gemini"]
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", convert_system_message_to_human=True, google_api_key=api_key_google)
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", convert_system_message_to_human=True)
 
 # from g4f import Provider, models
 # from langchain.llms.base import LLM
@@ -65,10 +68,9 @@ prompt_elaborate_more2 = PromptTemplate(
 
 
 
-
-url = "https://xoxlgvakygiyfijfeixu.supabase.co"
-key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhveGxndmFreWdpeWZpamZlaXh1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwNDkyNzU2NywiZXhwIjoyMDIwNTAzNTY3fQ.V3766GRj6hkt1Ci-52tjSiULVoF3nfCPPDnR6Hc_rT0"
-
+import os
+url: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
 st.set_page_config(
