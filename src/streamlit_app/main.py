@@ -142,7 +142,14 @@ def get_topic_descriptions():
     
     return data_list
 
-# def on_click_start(subject_matter_1s_list_selected, topic_descriptions_list_selected, use_subject_matter_1_filter):
+
+def on_click_start_restart(subject_matter_1s_list_selected):
+    on_click_start(subject_matter_1s_list_selected)
+   
+    for s in subject_matter_1s_list_selected:
+        data, count = supabase.table('questions').update({"show_again": True}).eq('subject_matter_1', s).execute()
+
+    
 def on_click_start(subject_matter_1s_list_selected, ):
     st.session_state.subject_matter_1s_list_selected = subject_matter_1s_list_selected
     use_subject_matter_1_filter = st.session_state.use_subject_matter_1_filter
@@ -178,6 +185,7 @@ def show_config_train():
     
     _, col2, col3, _ = st.columns([5,7,7,5])
     col2.button("Start!", on_click=on_click_start, args=[subject_matter_1s_list_selected])
+    col2.button("Start! (Restart questions if necessary)", on_click=on_click_start_restart, args=[subject_matter_1s_list_selected])
     # col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
     # col3.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
 
