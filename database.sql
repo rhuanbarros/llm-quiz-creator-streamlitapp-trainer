@@ -19,8 +19,10 @@ FROM (
     (NOT EXISTS (SELECT 1 FROM question_filters) ) 
 ) AS q
 LEFT JOIN answers AS a ON q.id = a.question_id
-WHERE a.question_id IS NULL
-    AND q.show_again = TRUE
+WHERE 
+    -- a.question_id IS NULL
+    -- AND 
+    q.show_again = TRUE
     AND q.level = 'beginner'
 ORDER BY RANDOM()
 LIMIT 1;
@@ -49,8 +51,10 @@ FROM (
     (NOT EXISTS (SELECT 1 FROM question_filters) ) 
 ) AS q
 LEFT JOIN answers AS a ON q.id = a.question_id
-WHERE a.question_id IS NULL
-    AND q.show_again = TRUE
+WHERE 
+    -- a.question_id IS NULL
+    -- AND 
+    q.show_again = TRUE
     AND q.level = 'intermediate'
 ORDER BY RANDOM()
 LIMIT 1;
@@ -72,8 +76,10 @@ FROM (
     (NOT EXISTS (SELECT 1 FROM question_filters) ) 
 ) AS q
 LEFT JOIN answers AS a ON q.id = a.question_id
-WHERE a.question_id IS NULL
-    AND q.show_again = TRUE
+WHERE 
+    -- a.question_id IS NULL
+    -- AND 
+    q.show_again = TRUE
     AND q.level = 'hard'
 ORDER BY RANDOM()
 LIMIT 1;
