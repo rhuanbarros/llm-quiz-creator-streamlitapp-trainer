@@ -1,4 +1,6 @@
-# 📚 Machine Learning Interview Preparation Trainer
+# 📚 Machine Learning Interview Preparation Trainer - legacy Stremalit version
+
+[New version using Anvil frontend framework](https://github.com/rhuanbarros/quiz-study-trainer)
 
 ## 🚀 Problem Addressed
 I needed to study some topics in machine learning, but I couldn't find any specific quiz about them. 
